@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Lobster&family=Pacifico&family=Pangolin&family=Pixelify+Sans:wght@500&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      overflow: hidden;
+      /*background-image: linear-gradient(to right top, #9a208c, #a71f8f, #b41d92, #c21a95, #cf1797, #c32697, #b73096, #ac3795, #873f89, #664077, #4c3d61, #393646);*/
+      font-size: 20px;
+      background-image: url("https://wallpapers.com/images/hd/parallax-background-hb9fl02o6zsu6s1c.jpg");
+
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Lobster', cursive;
+      font-size: 2em;
+      color: #fff0f5;
+    }
+
+
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    
+
+    #bg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40vw;
+      height: 2.3em;
+      border-radius: 10px;
+      background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+      transition: 0.20s;
+      font-family: 'Pixelify Sans', cursive;
+      
+
+
+      background-color: blue;
+    }
+
+    .dabba {
+      width: 90%;
+      height: 70vh;
+      border: 3px solid rgb(255, 255, 255);
+      border-radius: 20px;
+      background-color: rgba(73, 101, 101, 0.481);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      max-width: 1000px;
+
+
+    }
+
+    .kutty_dabba {
+      /* width:50px;
+            height:50px; */
+      
+      margin: 8px;
+      text-align: center;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: #39364664;
+      transition: 0.20s;
+      
+
+      /* margin-top:30px ; */
+      background-image: url("./paper.png");
+      background-position: center;
+      
+      background-size: cover;
+
+    }
+
+    .kutty_dabba p {
+
+      /* max-width:100% ; */
+      font-family: 'Pixelify Sans', cursive;
+      font-size: 1.8em;
+      
+    }
+
+    .g {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      
+
+    }
+    .trash{
+      height: 50vw;
+      width: 50vw;
+      position: absolute;
+      margin-left: 25vw ;
+      transform: translateY(100%);
+    }
+
+    .ti{
+      font-family: 'Pixelify Sans', cursive;
+      letter-spacing: 2px;
+      margin: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    #hint,#shuffle{
+      background-color: #00f2fe;
+      background-image: linear-gradient(to left top, #9400ff, #7265ff, #6591ff, #7eb4ff, #aed2ff);
+      width: 5em;
+      height: 2em;
+      border-radius: 0.5em;
+      font-size: 1em;
+      margin: 0.5em;
+      font-family: 'Pixelify Sans', cursive;
+      color: white;
+    }
+
+    .endScreen{
+      position: absolute;
+      height: 70vh;
+      width: 70vw;
+      border: 10px solid white;
+      background-color: rgb(17, 156, 255);
+      top: 0;
+      border-radius: 2em;
+      bottom: 0;
+      margin: auto;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pg{
+      background-color: black;
+      padding: 1em;
+      border-radius: 2em;
+    }
+
+    /* #game {
+      padding: 20px;
+      margin: 20px;
+    } */
+
+    #es{
+      transform: translateY(300%);
+      transition: 0.5s;
+    }
+
+
+   
+
+
+    @media screen and (min-width:1000px) {
+      #hint{
+        margin-left: 300px;
+        font-size: 1.5em;
+      }
+      #shuffle{
+        margin-right: 300px;
+        font-size: 1.5em;
+      }
+
+      
+      
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="g">
+    <div class="top">
+      <input type="button" value="Hint" id="hint" onclick="showhint()">
+      <input type="button" value="Shuffle" id="shuffle" onclick="shuffle()">
+    </div>
+    <div class="game" id="bg">
+      <p id="game"></p>
+    </div>
+      <h1 class="ti">TRY FINDING THEM ALL!!</h1>
+
+    <div class="dabba" id="dabba">
+
+
+
+    </div>
+  </div>
+  
+
+  <div>
+    <img id="t" class="trash" src="https://pngimg.com/d/recycle_bin_PNG8.png" alt="">
+    
+  </div>
+
+  <div class="endScreen" id="es">
+    <h1 class="ti" style="font-size: 5em;">YOU WIN</h1>
+    <div>
+      <h1 class="ti pg" onclick="play()">
+        Play Again?
+      </h1>
+      
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
+<script>
+    const fourLetterWords = ["gate","vase","cook","harm","vent","ripe","dime","ball","tilt","hike","rush","torn"];
+
+/*const posWordList = [
+  "ABLE", "BALE", "BABA", "BABY", "CAKE", "CALM", "DADA", "DARE", "ECHO", "FAME",
+  "FACE", "GOLD", "HOLD", "HOME", "LEAD", "LEAF", "IDEA", "JOKE", "INCA", "KEEN",
+  "EPIC", "LOVE", "MIST", "NORM", "TELE", "OPEN", "PACE", "QUIZ", "RAIN", "SAND",
+  "TIDE", "MEAN", "VAST", "WISE", "NOPE", "YEAR", "ZEST", "BARK", "CASE", "DINE",
+  "EMIT", "FORK", "GLOW", "HORN", "IRON", "JOIN", "KITE", "LOSE", "MIKE", "NOTE",
+  "NEON", "PAVE", "QUIZ", "RIDE", "SINK", "TUNE", "VINE", "WINE", "SHAW", "XRAY",
+  "YARN", "ZONE", "HOLE"
+];*/
+
+let arr;
+guessedWords=[];
+
+function boardFiller(a) {
+  if(a){
+    const dab = document.getElementById("dabba");
+  const dabba_height = dab.offsetHeight;
+  const dabba_width = dab.offsetWidth;
+  const width_value = (dabba_width - 50) / 5;
+  const height_value = (dabba_height - 56) / 7;
+  arr = [];
+
+  for (let i = 0; i < 12; i++) {
+    const words = fourLetterWords[i];
+    if(guessedWords.includes(words)){
+
+      
+    }
+    else{
+      arr.push(words.substring(0, 2).toUpperCase());
+    arr.push(words.substring(2, 4).toUpperCase());
+    }
+
+    
+  }
+
+  arr = arr.sort(() => Math.random() - 0.5);
+
+  let boxes = "";
+  for (let x = 0; x < arr.length; x++) {
+    const box = `<div style="height:${height_value}px;width:${width_value}px;" class="kutty_dabba" id="${x}" onclick="findWords(${x})"><p>${arr[x]}</p></div>`;
+    boxes += box;
+  }
+
+  dab.innerHTML = boxes;
+  }
+  else{
+    const dab = document.getElementById("dabba");
+  const dabba_height = dab.offsetHeight;
+  const dabba_width = dab.offsetWidth;
+  const width_value = (dabba_width - 50) / 5;
+  const height_value = (dabba_height - 56) / 7;
+  arr = [];
+
+  for (let i = 0; i < 12; i++) {
+    const words = fourLetterWords[i];
+    arr.push(words.substring(0, 2).toUpperCase());
+    arr.push(words.substring(2, 4).toUpperCase());
+  }
+
+  arr = arr.sort(() => Math.random() - 0.5);
+
+  let boxes = "";
+  for (let x = 0; x < arr.length; x++) {
+    const box = `<div style="height:${height_value}px;width:${width_value}px;" class="kutty_dabba" id="${x}" onclick="findWords(${x})"><p>${arr[x]}</p></div>`;
+    boxes += box;
+  }
+
+  dab.innerHTML = boxes;
+  }
+}
+
+
+
+let word = "";
+
+ele1="";
+ele2="";
+
+wordGuessCount=0;
+
+function findWords(element) {
+  word += document.getElementById(`${element}`).textContent;
+  if(word.length==2){
+        ele1=element;
+        
+  }
+  _(element).style.backgroundColor="#17161ac5";
+  
+
+
+  if (word.length == 4) {
+    console.log("Ok");
+    ele2=element;
+
+    if (  fourLetterWords.includes(word.toLowerCase())) {
+      guessedWords.push(word.toLowerCase());
+      console.log("true");
+      console.log(ele1)
+      console.log(ele2)
+
+      _(ele1).style.transition="1s";
+      _(ele2).style.transition="1s";
+
+      _(ele1).style.position="absolute";
+      _(ele1).style.transform="translateY(-300%)";
+      _(ele2).style.position="absolute";
+      _(ele2).style.transform="translateY(-300%)";
+      _(ele2).style.rotate="30deg";
+      _(ele1).style.zIndex="101";
+      _(ele2).style.zIndex="100";
+
+      _(ele1).style.top="-20";
+      _(ele2).style.top="-20";
+
+      wordGuessCount++;
+      
+
+
+      /*_(ele1).style.display="none";
+      _(ele2).style.display="none";*/
+      _("t").style.transition="0.20s";
+      _("t").style.transform="translateY(-60%)"
+
+      setTimeout(() => {
+        _(ele1).style.transform="translateY(500%)";
+        _(ele2).style.transform="translateY(500%)";
+
+
+        setTimeout(()=>{
+          _(ele1).style.display="none";
+      _(ele2).style.display="none";
+
+        },600);
+
+      }, 1000);
+      
+
+      
+
+      
+      
+
+      handleBackground(true);
+
+      if(wordGuessCount==12){
+        setTimeout(()=>{
+          console.log("You Win")
+          _("es").style.transform="translateY(0%)"
+          
+
+        },2000);
+
+      }
+    } else {
+      console.log("false");
+      handleBackground(false);
+      setTimeout(()=>{
+        _(ele1).style.backgroundColor="#39364664"
+      _(ele2).style.backgroundColor="#39364664"
+
+      },1000)
+      console.log(ele1)
+      console.log(ele2)
+    }
+  } else {
+    console.log("hi");
+  }
+
+  document.getElementById("game").textContent = word;
+}
+
+function handleBackground(isCorrect) {
+  const bg = _("bg");
+  const game = _("game");
+  const h = bg.offsetHeight;
+  const w = bg.offsetWidth;
+
+  bg.style.backgroundImage = isCorrect
+    ? "linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)"
+    : "linear-gradient(to top, #ff0844 0%, #ffb199 100%)";
+
+  bg.style.height = `${h + 30}px`;
+  bg.style.width += `${w + 30}px`;
+  game.style.fontSize = "40px";
+  
+
+  setTimeout(() => {
+    word = "";
+    game.textContent = word;
+    bg.style.backgroundImage = "linear-gradient(to right, #4facfe 0%, #00f2fe 100%)";
+    bg.style.height = `${h}px`;
+    bg.style.width = `${w}px`;
+    _("t").style.transform="translateY(100%)"
+  }, 1500);
+}
+
+function shuffle() {
+  boardFiller(true);
+}
+
+function _(id) {
+  return document.getElementById(id);
+}
+
+function showhint() {
+  console.log("hint");
+  shuffle()
+  outerLoop: for (let i = 0; i < 12; i++) {
+    if (!guessedWords.includes(fourLetterWords[i])) {
+      const sub1 = fourLetterWords[i].substring(0, 2);
+      const sub2 = fourLetterWords[i].substring(2);
+
+      for (let j = 0; j < 12; j++) {
+        console.log((_("" + j).textContent));
+
+        if (_("" + j).textContent.toLowerCase() === sub1.toLowerCase()) {   
+          _("" + j).style.backgroundColor = "red";
+
+          setTimeout(()=>{
+            
+            _("" + j).style.backgroundColor = "#39364664";
+
+          },100)
+          console.log("first if");
+        }
+
+        if (_("" + j).textContent.toLowerCase() === sub2.toLowerCase()) {
+          _("" + j).style.backgroundColor = "red";
+          console.log("sec if");
+          setTimeout(()=>{
+            
+            _("" + j).style.backgroundColor = "#39364664";
+
+          },100)
+        }
+      }
+      break outerLoop; // This will break out of the outer loop.
+    }
+  }
+}
+
+
+
+boardFiller(false);
+
+function play(){
+  boardFiller(false);
+  _("es").style.transform="translateY(300%)"
+
+}
+
+</script>
