@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        .f{
+            width: 100%;
+            height: 100vh;
+            background-image: url("https://wallpapers.com/images/featured/beach-eoxvk1itsaibfbo1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.20s;
+
+        }
+        .f2{
+            background-image: url("https://static.vecteezy.com/system/resources/thumbnails/021/657/604/small/yellow-sun-light-up-free-png.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 30vw;
+            width: 30vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: 0.20s;
+        }
+        .f3{
+            background-image: url("./umb.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 0 100px;
+            height: 600px;
+            width: 600px;
+            position: fixed;
+            bottom: 0;
+            transition: 0.20s;
+            
+        }
+        .f3:hover{
+            height: 650px;
+            width: 650px;
+            cursor: pointer;
+        }
+        .f3 h1{
+            transform: rotate(22deg);
+            position: fixed;
+            font-size: 50px;
+            color: rgb(0, 0, 0);
+        
+            
+            z-index: 100;
+            
+            
+        }
+        .menu{
+            position: absolute;
+            z-index: 10;
+            width: 1000px;
+            height: 1000px;
+            background-color: gold;
+            border-radius: 50px;
+            opacity: 96%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+        
+        .slide {
+            -webkit-appearance: none;
+            width: 400px;
+            height: 15px;
+            border-radius: 5px;  
+            background: #e4e4e4;
+            outline: none;
+            
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+          }
+          
+          .slide::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%; 
+            background: #38a30a;
+            border: 2px solid black;
+            cursor: pointer;
+          }
+          
+          .slide::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #04AA6D;
+            cursor: pointer;
+          }
+
+          .start{
+            padding: 20px;
+            background-color: rgb(255, 255, 210);
+            border-radius: 20px;
+          }
+          .start:hover{
+            background-color: rgb(255, 255, 59);
+          }
+
+          .close{
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            font-size: 30px;
+            background-color: red;
+            padding: 20px;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            
+          }
+          .close:hover{
+            cursor: pointer;
+          }
+
+    </style>
+</head>
+<body>
+    
+    <div class="f" id="f">
+        <div class="menu" id="m">
+            <div class="close" onclick="closeM()">
+                X
+            </div>
+            <div>
+                <h1>Work Time</h1>
+                <input type="range" class="slide" min="1" max="60" name="" value="30"  id="wt" oninput="changeVal('wt','wtVal')">
+                <h2 id="wtVal">30</h2>
+
+            </div>
+
+            <div>
+                <h1>Short Break Time</h1>
+                <input type="range" class="slide" min="1" max="60" value="10" name="" id="sb" oninput="changeVal('sb','sbVal')">
+                <h2 id="sbVal">10</h2>
+            
+
+            </div>
+            <div>
+                <h1>Long Break Time</h1>
+                <input type="range" class="slide" min="1" max="60" name="" value="20" id="lb" oninput="changeVal('lb','lbVal')">
+                <h2 id="lbVal">20</h2>
+                
+
+            </div>
+
+            <div class="start">
+                <h1 onclick="pomodoro()">Start</h1>
+            </div>
+            
+        </div>
+        <div class="f2">
+            <h1 id="typeT"></h1>
+            <h1 id="clock">00:00</h1>
+        </div>
+
+    </div> 
+    <div class="f3" onclick="mOpen()">
+        <!-- <h1>Menu</h1> -->
+    </div>
+    
+
+
+    
+</body>
+</html>
+<script src="./script.js"></script>
