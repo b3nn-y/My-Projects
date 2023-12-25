@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 60vw;
+            height: 10vh;
+            
+            display: flex;
+            border-bottom: 0;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.20s;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 4px 4px;
+            background-color: rgb(123, 199, 246);
+            
+            font-family: monospace;
+        }
+        h1,img{
+            text-align: center;
+            margin: 20px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: rgb(203, 255, 238);
+
+        }
+        img{
+            width: 50px;
+            height: 50px;
+            filter:brightness(0);
+            transition: 0.20s;
+        }
+        h2{
+            text-align: center;
+            width: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="b1" onclick="disAns('1')">
+        <h1>What has to be broken before you can use it?</h1>
+        <img id="i1" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b2">
+        <h1>An egg</h1>
+    </div>
+    <div id="b3" onclick="disAns('3')">
+        <h1>What is full of holes but still holds water?</h1>
+        <img id="i3" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b4">
+        <h1>A sponge</h1>
+    </div>
+    <div id="b5" onclick="disAns('5')">
+        <h1>What can you break, even if you never pick it up or touch it?</h1>
+        <img id="i5" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b6">
+        <h1>A promise</h1>
+    </div>
+    <div id="b7" onclick="disAns('7')">
+        <h1>The more of this there is, the less you see. What is it?</h1>
+        <img id="i7" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b8">
+        <h1>Darkness</h1>
+    </div>
+    <div id="b9" onclick="disAns('9')">
+        <h1>What has legs, but doesn’t walk?</h1>
+        <img id="i9" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b10">
+        <h1>A table</h1>
+    </div>
+    <div id="b11" onclick="disAns('11')">
+        <h1>What can you catch, but not throw?</h1>
+        <img id="i11" src="https://static.vecteezy.com/system/resources/previews/008/491/404/non_2x/hand-drawn-arrow-clipart-free-png.png" alt="">
+
+    </div>
+    <div id="b12">
+        <h1>A cold</h1>
+    </div>
+
+
+
+</body>
+</html>
+
+<script>
+    function _(id){
+        return document.getElementById(id);
+    }
+    
+    
+    function hideAnswers(){
+        for(i=1;i<13;i++){
+            if(i%2==0){
+                _("b"+i).style.height="0px"
+                _("b"+i).style.color="transparent"
+                _("b"+i).style.borderBottom="0px solid black"
+                _("b"+i).style.boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;"
+                _("b"+i).style.backgroundColor="rgb(206, 232, 255)"
+                _("b"+i).style.textAlign="center"
+                
+                
+
+            }
+        }
+    }
+
+    hideAnswers()
+
+    currentOpenAns=-1
+    ansOpen=false;
+    function disAns(a){
+        if(currentOpenAns==-1){
+            console.log(a)
+            _("b"+(parseInt(a)+1)).style.color="black"
+            _("b"+(parseInt(a)+1)).style.height="100px"
+            _("b"+(parseInt(a)+1)).style.width="65vw"
+            _("i"+a).style.transform="rotate(90deg)"
+            currentOpenAns=(parseInt(a)+1)
+            ansOpen=true
+            return;
+        }
+
+        if(ansOpen){
+            _("b"+currentOpenAns).style.height="0px"
+            _("b"+currentOpenAns).style.color="transparent"
+            _("b"+currentOpenAns).style.width="60vw"
+            _("i"+(currentOpenAns-1)).style.transform="rotate(0deg)"
+
+            console.log(currentOpenAns)
+            currentOpenAns=(parseInt(a)+1);
+
+            console.log(a)
+            _("i"+a).style.transform="rotate(90deg)"
+            _("b"+(parseInt(a)+1)).style.color="black"
+            _("b"+(parseInt(a)+1)).style.height="100px"
+            _("b"+(parseInt(a)+1)).style.width="65vw"
+            
+            
+
+        }
+
+
+
+    }
+</script>
