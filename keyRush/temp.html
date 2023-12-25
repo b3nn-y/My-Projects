@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Rush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Lobster&family=Pacifico&family=Pangolin&family=Pixelify+Sans:wght@500&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&family=Wellfleet&display=swap" rel="stylesheet">
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        html{
+            font-size: 20px;
+        }
+        body{
+            background-image: url("https://cdn.dribbble.com/users/787991/screenshots/2031467/jupiter-large.gif");
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .keyBoard{
+            height: 25em;
+            width: 80%;
+
+            font-family: "Pixelify Sans";
+            margin: auto;
+            position: fixed;
+            bottom: 0;
+            margin-bottom: 30px;
+            left: 0;
+            right: 0;
+
+
+        }
+        .row1,.row2,.row3,.row4,.row5{
+            display: flex;
+        }
+        .tilt{
+            height: 20px;
+            width: 30x;
+            flex-grow: 1.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+
+        }
+        .one,.two,.three,.four,.five,.six,.seven,.eight,.nine,.zero,.dash,.plus,.sq{
+            height: 20px;
+            width: 30x;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .keys{
+
+            height: 5em;
+            margin: 1px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+            background-image: url("b3.png");
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            transition: 0.50s color;
+            opacity: 80%;
+        }
+        .tab{
+            flex-grow: 1.6;
+        }
+        .sl1{
+            flex-grow: 1.5;
+        }
+        .caps{
+            flex-grow: 1.2;
+        }
+        .enter{
+            flex-grow: 1.7;
+        }
+        .sh{
+            flex-grow: 2;
+        }
+        .win img{
+            width: 40px;
+            height: 40px;
+        }
+        #ctrl{
+            flex-grow: 1.3;
+        }
+        .sp{
+            flex-grow: 5;
+        }
+        .upDown{
+            display: flex;
+            flex-direction: column;
+        }
+        .up,.down{
+            width: 100%;
+        }
+        h1{
+            font-size: 30px;
+        }
+        .tilt h1{
+            font-size: 30px;
+        }
+
+        .tab,.caps,.sh,.ctrl{
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            /*box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;*/
+        }
+        .enter{
+            display: flex;
+            justify-content: end;
+            padding-right: 20px;
+            align-items: center;
+        }
+        .back{
+            flex-grow: 1.2;
+            display: flex;
+            padding-right: 20px;
+            justify-content: right;
+            align-items: center;
+            
+        }
+        .back h1{
+            font-size: 26px;
+            font-weight: 400;
+        }
+        .con{
+            display: flex;
+            justify-content: center;
+            
+            
+            
+            width:100%
+            
+        }
+        .content{
+            letter-spacing: 3px;
+            margin: 20px;
+            font-size: 40px;
+            width: 800px;
+            
+        }
+        .alpha{
+            text-transform: lowercase;
+        }
+        .content h1{
+            padding: 10px;
+            font-family: "Wellfleet";
+
+        }
+        
+        .cur{
+            position: absolute;
+            z-index: 10;
+            transition: 0.15s;
+            
+           
+
+        }
+        .cur img{
+            width: 10px;
+            height: 30px;
+            opacity: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <div class="cur" id="cur"><img src="./type 2.png" alt=""></div>   
+        <div class="content" id="con">
+            
+            
+            
+        </div>
+    </div>
+    <div class="keyBoard">
+        <div class="row1">
+            
+            <div id="`" class="tilt keys"><h1>`</h1></div>
+            <div id="1" class="one keys"><h1>1</h1></div>
+            <div id="2" class="two keys"><h1>2</h1></div>
+            <div id="3" class="three keys"><h1>3</h1></div>
+            <div id="4" class="four keys"><h1>4</h1></div>
+            <div id="5" class="five keys"><h1>5</h1></div>
+            <div id="6" class="six keys"><h1>6</h1></div>
+            <div id="7" class="seven keys"><h1>7</h1></div>
+            <div id="8" class="eight keys"><h1>8</h1></div>
+            <div id="9" class="nine keys"><h1>9</h1></div>
+            <div id="0" class="zero keys"><h1>0</h1></div>
+            <div id="-" class="dash keys"><h1>-</h1></div>
+            <div id="=" class="plus keys"><h1>+</h1></div>
+            <div id="backspace" class="back keys"><h1>backspace</h1></div>
+            
+        
+
+        </div>
+        <div class="row2">
+            
+            <div id="tab" tabindex="-1" class="tab keys">tab</div>
+            <div id="q" class="q keys sq alpha"><h1>Q</h1></div>
+            <div id="w" class="w keys sq alpha"><h1>W</h1></div>
+            <div id="e" class="e keys sq alpha"><h1>E</h1></div>
+            <div id="r" class="r keys sq alpha "><h1>R</h1></div>
+            <div id="t" class="t keys sq alpha"><h1>T</h1></div>
+            <div id="y" class="y keys sq alpha"><h1>Y</h1></div>
+            <div id="u" class="u keys sq alpha"><h1>U</h1></div>
+            <div id="i" class="i keys sq alpha"><h1>I</h1></div>
+            <div id="o" class="o keys sq alpha"><h1>O</h1></div>
+            <div id="p" class="p keys sq alpha"><h1>P</h1></div>
+            <div id="[" class="sqL keys sq"><h1>[</h1></div>
+            <div id="]" class="sqR keys sq"><h1>]</h1></div>
+            <div id="\" class="sl1 keys sq"><h1>\</h1></div>
+            
+        
+
+        </div>
+
+        <div class="row3">
+            
+            <div id="caps" class="caps keys">Caps Lock</div>
+            <div id="a" class="a keys sq alpha"><h1>A</h1></div>
+            <div id="s" class="s keys sq alpha"><h1>S</h1></div>
+            <div id="d" class="d keys sq alpha"><h1>D</h1></div>
+            <div id="f" class="f keys sq alpha"><h1>F</h1></div>
+            <div id="g" class="g keys sq alpha"><h1>G</h1></div>
+            <div id="h" class="h keys sq alpha"><h1>H</h1></div>
+            <div id="j" class="j keys sq alpha"><h1>J</h1></div>
+            <div id="k" class="k keys sq alpha"><h1>K</h1></div>
+            <div id="l" class="l keys sq alpha"><h1>L</h1></div>
+            <div id=";" class="colon keys sq"><h1>:</h1></div>
+            <div id="'" class="quote keys sq"><h1>"</h1></div>
+           
+            <div id="enter" class="enter keys">Enter</div>
+            
+        
+
+        </div>
+
+        <div class="row4">
+            
+            <div id="sh" class="sh keys">Shift</div>
+            <div id="z" class="z keys sq alpha"><h1>Z</h1></div>
+            <div id="x" class="x keys sq alpha"><h1>X</h1></div>
+            <div id="c" class="c keys sq alpha"><h1>C</h1></div>
+            <div id="v" class="v keys sq alpha"><h1>V</h1></div>
+            <div id="b" class="b keys sq alpha"><h1>B</h1></div>
+            <div id="n" class="n keys sq alpha"><h1>N</h1></div>
+            <div id="m" class="m keys sq alpha"><h1>M</h1></div>
+            <div id="," class="comma keys sq"><h1>,</h1></div>
+            <div id="." class="fstop keys sq"><h1>.</h1></div>
+            <div id="/" class="qmark keys sq"><h1>?</h1></div>
+            <div id="sh2" class="sh keys ">Shift</div>
+        </div>
+
+        <div class="row4">
+            
+            <div id="ctrl" class="ctrl keys">ctrl</div>
+            <div id="fn" class="fn keys sq">fn</div>
+            <div id="win" class="win keys sq"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Windows_key_logo_2012_%28dark-grey%29.svg/1862px-Windows_key_logo_2012_%28dark-grey%29.svg.png" alt=""></div>
+            <div id="alt" class="alt keys sq">alt</div>
+            <div id=" " class="sp keys sq">SPACE</div>
+            <div id="alt2" class="alt keys sq">alt</div>
+            <div id="ctrl2" class="n keys sq">ctrl</div>
+            <div id="arrowleft" class="left keys sq">&#x22B2</div>
+            <div id="upDown" class="upDown keys sq">
+                <div id="arrowup" class="up keys sq">&#x21A5</div>
+                <div id="arrowdown" class="down keys sq">&#x21A7</div>
+            </div>
+            <div id="arrowright" class="right keys sq">&#x22B3</div>
+            
+        </div>
+
+
+    </div>
+</body>
+</html>
+<script>
+
+    
+    let capsDown=false;
+    _("cur").style.opacity="0%";
+    
+  
+    function textGen(){
+        
+        a="Hi this is benny and this is a test run of text before the real stuff."
+        letterLst=a.split('');
+        htmlTags="<h1>";
+        ind=0
+        letterLst.forEach(function(ele){
+            htmlTags+=`<span id="l${ind}">${ele}</span>`;
+            ind++;
+        })
+        _("con").innerHTML=htmlTags+"</h1>"
+        _("cur").style.opacity="100%";
+        _("cur").style.top=_(`l${currentInd}`).offsetTop+"px";
+        _("cur").style.left=_(`l${currentInd}`).offsetLeft-5+"px";
+    }
+
+
+    
+    
+
+    let currentInd=0
+        
+
+
+
+  
+
+    function inputValidator(letter){
+        
+        
+        
+        if(letter==="Control" || letter==="CapsLock" || letter==="Shift" || letter==="Alt" || letter==="Backspace" || letter==="Tab" ||letter==="ArrowDown" ||letter==="ArrowUp" ||letter==="ArrowLeft" ||letter==="ArrowRight" ||letter==="Enter"  ){
+            if(letter==="Backspace"){
+                if(currentInd>0){
+                    currentInd--;                                                                   
+                }
+                if(_(`l${currentInd}`).textContent=="-"){
+                    _(`l${currentInd}`).textContent=" ";
+                }
+
+                _(`l${currentInd}`).style.color="gray   ";
+                _("cur").style.top=_(`l${currentInd}`).offsetTop+"px";
+                _("cur").style.left=_(`l${currentInd}`).offsetLeft-5+"px";
+            }
+        }
+        else{
+
+            if(letter===_(`l${currentInd}`).textContent){
+                _(`l${currentInd}`).style.color="green";
+                _("cur").style.top=_(`l${currentInd}`).offsetTop+"px";
+                _("cur").style.left=_(`l${currentInd}`).offsetLeft +_(`l${currentInd}`) .offsetWidth+-5+"px";
+
+            }
+            else{
+                if(letter!==" " && " "===_(`l${currentInd}`).textContent ){
+                    _(`l${currentInd}`).textContent="-";
+                    _(`l${currentInd}`).style.color="red";
+                    _("cur").style.top=_(`l${currentInd}`).offsetTop+"px";
+                  _("cur").style.left=_(`l${currentInd}`).offsetLeft +_(`l${currentInd}`) .offsetWidth+-5+"px";
+                }
+                else{
+                    _(`l${currentInd}`).style.color="red";
+                    _("cur").style.top=_(`l${currentInd}`).offsetTop+"px";
+                  _("cur").style.left=_(`l${currentInd}`).offsetLeft +_(`l${currentInd}`) .offsetWidth+-5+"px";
+                }
+            }
+            currentInd++;
+
+        }
+        
+        
+    }
+
+    textGen();
+
+  
+
+
+
+    key=""
+    let keyDOWN=document.body.addEventListener("keydown",function(ev){
+        console.log(ev.key);
+        key=String(ev.key);
+        keyBoardpresDown(key)
+
+    })
+    let keyUP=document.body.addEventListener("keyup",function(ev){
+        console.log(ev.key);
+        key=String(ev.key);
+        keyBoardpresUp(key)
+
+    })
+
+    function keyBoardpresDown(ke){
+        inputValidator(String(ke));
+        k=ke.toLowerCase();
+        switch(k){
+            case "control":_("ctrl").style.backgroundImage="url(./b4.png)";
+                        _("ctrl2").style.backgroundImage="url(./b4.png)";
+                        return;
+            break;
+            case "shift":_("sh").style.backgroundImage="url(./b4.png)";
+                         _("sh2").style.backgroundImage="url(./b4.png)";
+                         let AlphsKeys=document.querySelectorAll(".alpha");
+                         AlphsKeys.forEach(function(element) {
+                         element.style.textTransform = 'uppercase';
+                    
+                  });
+                         return;
+            break;
+            case "capslock":if(capsDown){
+                _("caps").style.backgroundImage="url(./b3.png)";
+                capsDown=false;
+                let AlphsKeys=document.querySelectorAll(".alpha");
+                AlphsKeys.forEach(function(element) {
+                    element.style.textTransform = 'lowercase';
+                    
+                  });
+            }
+            else{
+                _("caps").style.backgroundImage="url(./b4.png)";
+                capsDown=true;
+                let AlphsKeys=document.querySelectorAll(".alpha");
+                AlphsKeys.forEach(function(element) {
+                    element.style.textTransform = 'uppercase';
+                    
+                  });
+            }
+            return;
+            break;
+            case "alt":_("alt").style.backgroundImage="url(./b4.png)";
+                _("alt2").style.backgroundImage="url(./b4.png)";
+            break;
+
+            
+        }
+        
+        b=document.getElementById(k);
+        b.style.backgroundImage="url(./b4.png)";
+    }
+
+    function keyBoardpresUp(ke){
+        k=ke.toLowerCase();
+        if(k=="capslock"){
+            return;
+        }
+        if(k=="control"){
+            _("ctrl").style.backgroundImage="url(./b3.png)";
+            _("ctrl2").style.backgroundImage="url(./b3.png)";
+            return;
+        }
+        if(k=="shift"){
+            _("sh").style.backgroundImage="url(./b3.png)";
+            _("sh2").style.backgroundImage="url(./b3.png)";
+            let AlphsKeys=document.querySelectorAll(".alpha");
+                AlphsKeys.forEach(function(element) {
+                    element.style.textTransform = 'lowercase';
+                    
+                  });
+            return;
+        }
+        if(k=="alt"){
+            _("alt").style.backgroundImage="url(./b3.png)";
+            _("alt2").style.backgroundImage="url(./b3.png)";
+            return;
+        }
+        if(k=="tab"){
+            _("tab").style.backgroundImage="url(./b3.png)";
+            
+            return;
+        }
+
+        b=document.getElementById(k);
+        b.style.backgroundImage="url(./b3.png)";
+    }
+    function _(id){
+        return document.getElementById(id);
+    }
+ /*   let MorseCodeMastery = `
+    Within the hallowed walls of the library, Rebecca, an enigmatic virtuoso, orchestrated a clandestine symphony of intellect—a masterpiece composed entirely in Morse code. Each meticulously crafted dot and dash unveiled a narrative that transcended the traditional boundaries of academia. The professor, initially confounded, found himself drawn into the rhythmic cadence of innovation. Thus unfolded a transcendent lesson: creativity, like Morse code, requires decoding the unconventional.
+  `;
+  
+  let DuckTalesQuantumRebellion = `
+    Albert, the prodigious physicist, descended upon the physics lab not as a student but as a maestro orchestrating a revolution. His vision: a perpetual motion machine powered not by mundane forces but by the whimsy of rubber ducks. The quacking legion, in perpetual motion, defied the stoic laws of physics, leaving the class in uproarious laughter and profound contemplation. The lesson etched in duck feathers: the boundaries of scientific inquiry are meant to be playfully challenged.
+  `;
+  
+  let CaffeinatedFloraAlchemy = `
+    In the realm of biology, Jessica's accidental spill of morning coffee birthed an elixir that transcended the ordinary. The plants, intoxicated by the caffeinated concoction, grew with a fervor that defied conventional limits. The spilled coffee became a symbol not of mishap, but of serendipity—a reminder that even in the unpredictable chaos of experimentation, nature might reveal its hidden truths.
+  `;
+  
+  let LiteraryBallet = `
+    Emily, the literary rebel, transformed the rigid structures of academia into an ethereal ballet of words. Through expressive movements and a narrative woven in the language of dance, she communicated a story that transcended the confines of paragraphs. The class, initially skeptical, found themselves not just immersed in literature but immersed in an experience. The profound takeaway: sometimes, stories are best told through the grace of movement.
+  `;
+  
+  let EmojiOdysseyPixelSymphony = `
+    In the age of digital communication, Alex embarked on a poetic odyssey—a voyage through emotions conveyed in pixels and symbols. The canvas of emojis painted a vivid tapestry, and the class, initially befuddled, discovered the nuanced richness hidden within seemingly simplistic symbols. The lesson echoed in pixelated smiles: language evolves, and in the realm of emojis, poetry finds a new frontier.
+  `;
+  
+  let AntarcticMirageEnchantment = `
+    The legend of Pablo, the phantom penguin, swept through the college like a zephyr of whimsy, transforming mundane hallways into an ethereal Antarctic realm. Students, fueled by the spark of imagination, embarked on a quest for the elusive feathered friend. Pablo became not just a hoax but a symbol—a reminder that within the routine lies the magic of believing in the extraordinary.
+  `;
+  
+  let GlitteringAlchemyDiscovery = `
+    In the chemistry laboratory, where equations met elements, a routine experiment birthed a spectacle of glittering explosions. The classroom, instead of succumbing to panic, was bathed in the iridescence of unexpected beauty. The mishap turned into an alchemical celebration—a reminder that the pursuit of knowledge, even in its most structured form, can birth dazzling revelations.
+  `;
+  
+  let PhilosophicalDialoguesEnchantedForest = `
+    Amidst the philosophical musings, Amy's seemingly simple question— "If a tree falls in a forest and no one's around, does it make a sound?"—unleashed an expedition into the enchanted forest of perception and reality. The lecture hall transformed into a realm where every thought echoed through the trees, unraveling layers of contemplation. The profound simplicity of the question left the class in awe of the intricate dance between perception and existence.
+  `;
+  
+  let MathematicalBalletEquations = `
+    What began as a dance-off for extra credit evolved into a grand-scale mathematical ballet. Ethan's infectious enthusiasm turned the classroom into a rhythmic arena where equations waltzed with movements, proving that mathematics isn't merely a collection of numbers but a dance waiting to unfold—an elegant choreography of logic and rhythm.
+  `;
+  
+  let CodeComedyRevolution = `
+    Lily, the harbinger of digital humor, not only programmed lines of code but orchestrated a stand-up comedy routine within the realm of algorithms. The laughter that echoed through the lecture hall wasn't just amusement; it was a revolution challenging the perception of seriousness in the world of coding. Lily had not just written code; she had created a digital carnival of hilarity that blurred the lines between the binary and the comical.
+  `;
+  const quotes = {
+    awkwardMoves,
+    rollercoasterRide,
+    liquidMotivation,
+    embraceTheMess,
+    makeMargarita,
+    vibeAndTribe,
+    adultingScavengerHunt,
+    smileWithTeeth,
+    standOut,
+    chocolateIsSalad,
+    procrastinationSport,
+    GPAandCaffeinatedChaos,
+    reactWithStyle,
+    pretendToBeNormal,
+    movieMainCharacter,
+    energySavingMode,
+    forgetToCheckPhone,
+    beAVoice,
+    burritoLife,
+    senseOfHumorPhD,
+    gettingStartedWithCoffee,
+    pretendingToBeNormalAgain,
+    lifeHackDancing,
+    chronologicallyChallenged,
+    secondMouseGetsCheese,
+    snacksAndAlliance,
+    absurdlyHappyLife,
+    glitterAndConfettiFuture,
+    parallelParkingAchievement,
+    upgradeConversationsAndSnacks,
+  };
+  
+  // Use quotes as needed in your project!
+  
+  const stories = {
+    MorseCodeMastery,
+    DuckTalesQuantumRebellion,
+    CaffeinatedFloraAlchemy,
+    LiteraryBallet,
+    EmojiOdysseyPixelSymphony,
+    AntarcticMirageEnchantment,
+    GlitteringAlchemyDiscovery,
+    PhilosophicalDialoguesEnchantedForest,
+    MathematicalBalletEquations,
+    CodeComedyRevolution,
+  };
+  let awkwardMoves = "In the dance of life, your awkward moves are just as essential as your smooth ones.";
+
+  let rollercoasterRide = "Life is a rollercoaster; might as well throw your hands up and enjoy the ride.";
+  
+  let liquidMotivation = "Coffee: the liquid motivation that turns 'I can't' into 'I'm unstoppable.'";
+  
+  let embraceTheMess = "Embrace the glorious mess that you are; it's where the magic happens.";
+  
+  let makeMargarita = "If life gives you lemons, make a margarita and find someone with salt and tequila.";
+  
+  let vibeAndTribe = "Your vibe attracts your tribe, so make sure your vibe is disco ball fabulous.";
+  
+  let adultingScavengerHunt = "Adulting is a never-ending scavenger hunt for the matching sock of life.";
+  
+  let smileWithTeeth = "Life is short; smile while you still have teeth.";
+  
+  let standOut = "Why fit in when you were born to stand out? Peacocks don't blend in with pigeons.";
+  
+  let chocolateIsSalad = "Chocolate comes from cocoa, which is a tree. That makes it a plant. Chocolate is salad.";
+  
+  let procrastinationSport = "If procrastination were an Olympic sport, I'd compete... tomorrow.";
+  
+  let GPAandCaffeinatedChaos = "Your GPA doesn't define you. It's more like a random number generator with a preference for caffeinated chaos.";
+  
+  let reactWithStyle = "Life is 10% what happens to us and 90% how we react to it. So, react with style and a touch of sarcasm.";
+  
+  let pretendToBeNormal = "Sometimes I pretend to be normal, but it gets boring. So, I go back to being me.";
+  
+  let movieMainCharacter = "If life were a movie, you'd be the main character, and popcorn would be a food group.";
+  
+  let energySavingMode = "You're not lazy; you're in energy-saving mode for your future brilliance.";
+  
+  let forgetToCheckPhone = "Do more things that make you forget to check your phone.";
+  
+  let beAVoice = "Be a voice, not an echo. Unless it's a really funny echo.";
+  
+  let burritoLife = "Life is like a burrito: messy but delicious.";
+  
+  let senseOfHumorPhD = "If laughter is the best medicine, your sense of humor is a PhD waiting to happen.";
+  
+  let gettingStartedWithCoffee = "The secret of getting ahead is getting started, but also, coffee helps.";
+  
+  let pretendingToBeNormalAgain = "Pro tip: Adulting is easier with a sprinkle of fairy dust and a playlist of '90s hits.";
+  
+  let lifeHackDancing = "Life hack: If you're ever feeling down, just start dancing. Bonus points if it's in public.";
+  
+  let chronologicallyChallenged = "You're not late; you're chronologically challenged.";
+  
+  let secondMouseGetsCheese = "The early bird might get the worm, but the second mouse gets the cheese.";
+  
+  let snacksAndAlliance = "Your vibe attracts your tribe, but your snacks determine the strength of the alliance.";
+  
+  let absurdlyHappyLife = "Life is too short to be anything but absurdly happy.";
+  
+  let glitterAndConfettiFuture = "The best way to predict the future is to create it. Preferably with glitter and confetti.";
+  
+  let parallelParkingAchievement = "Adulting achievement unlocked: Successfully parallel parked on the first try.";
+  
+  let upgradeConversationsAndSnacks = "Life's too short for boring conversations and bad snacks. Upgrade both.";
+  
+  */
+</script>
