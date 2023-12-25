@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+            font-family: sans-serif;
+            transition: 1s;
+        }
+    
+        input:focus {
+            outline: none;
+        }
+    
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: slategrey;
+        }
+    
+        .buttons {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+    
+        .inp {
+            display: flex;
+        }
+    
+        .inp input {
+            background-color: rgb(252, 250, 249);
+            width: 60%;
+            height: 50px;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding-left: 2%;
+            font-size: 2rem;
+            text-align: center;
+        }
+    
+        .cal {
+            border: 5px solid black;
+            background-color: rgb(0, 0, 0);
+            padding-top: 5%;
+            border-radius: 30px;
+            min-height: 300px;
+        }
+    
+        .buttons input {
+            margin-right: 2%;
+            background-color: rgb(206, 0, 0);
+            border-radius: 50%;
+            border: 0;
+            color: white;
+            font-size: 2rem;
+            height: 60px;
+            width: 60px;
+        }
+    
+        #inp1 {
+            margin-left: 2%;
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+            border-right: 0px;
+            background-color: rgb(255, 255, 255);
+        }
+    
+        #inp2 {
+            margin-right: 2%;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+            border-left: 0px;
+            background-color: rgb(202, 202, 202);
+        }
+    
+        #result {
+            margin: 50px;
+            font-size: 60px;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            border-radius: 30px;
+        }
+    
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 50px;
+        }
+    
+        #result::before {
+            content: "=";
+            color: black;
+            margin-right: 10px;
+        }
+    
+        h2 {
+            color: aliceblue;
+        }
+    
+        .next img {
+            filter: invert();
+            height: 100px;
+            width: 100px;
+        }
+    
+        .next {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    
+        #inp3 {
+            background-color: rgb(252, 250, 249);
+            width: 80%;
+            height: 70px;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding-left: 2%;
+            font-size: 2rem;
+            text-align: center;
+        }
+    
+        #inp4 {
+            background-color: rgb(252, 250, 249);
+            width: 80%;
+            height: 70px;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding-left: 2%;
+            font-size: 2rem;
+            text-align: center;
+        }
+    
+        .calButtons {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+        }
+    
+        .calButtons input {
+            background-color: rgb(180, 192, 255);
+            width: 80%;
+            height: 70px;
+            padding-left: 2%;
+            font-size: 2rem;
+            text-align: center;
+            border-radius: 30px;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+    
+        .s2 {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    
+        #result2 {
+            font-size: 60px;
+            font-family: sans-serif;
+            color: black;
+        }
+    
+        .n2 {
+            transform: rotate(180deg);
+        }
+    
+        #col {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            bottom: 2%;
+            right: 2%;
+        }
+    
+        #er {
+            color: red;
+            font-size: 2rem;
+        }
+    
+        .g {
+            font-size: 2rem;
+            margin-left: 35%;
+            border-radius: 30px;
+            margin-top: 20%;
+            padding: 30px 60px;
+        }
+    
+        .fr {
+            display: flex;
+            justify-content: center;
+            justify-content: space-around;
+        }
+    
+        .fc {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            max-width: 30%;
+        }
+    
+        .fc h1 {
+            font-size: 20px;
+            text-align: center;
+        }
+    
+        option,
+        select {
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 2rem;
+        }
+    
+        .in {
+            text-align: center;
+            font-size: 2rem;
+            width: 200px;
+            color: white;
+            background-color: rgb(0, 0, 0);
+            border: 0;
+            border-bottom: 7px solid rgb(156, 154, 154);
+            padding-bottom: 10px;
+        }
+    
+        #er {
+            color: white;
+        }
+    
+        .si {
+            padding: 0;
+        }
+    
+        .si h1 {
+            margin: 30px;
+        }
+    
+        .s {
+            font-size: 20px;
+        }
+    
+        .checkSI {
+            width: 100%;
+        }
+    
+        .checkSI input {
+            background-color: white;
+            font-size: 2rem;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 20px;
+            display: flex;
+            margin-left: 34%;
+        }
+    
+        .output {
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .output h2 {
+            font-family: sans-serif;
+        }
+    
+        .cb input {
+            display: block;
+            font-size: 2rem;
+            margin: 20px;
+            padding: 10px;
+            max-width: 1000px;
+        }
+    
+        .cb {
+            display: flex;
+        }
+    
+        .calculators {
+            display: flex;
+        }
+    
+        #c3,
+        #c4,
+        #c2,
+        #c5 {
+            display: none;
+        }
+    
+        .b {
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+    
+        .counter {
+            display: flex;
+            max-width: 300px;
+            align-items: center;
+            background-color: white;
+            height: 50px;
+            justify-content: space-between;
+            margin: auto;
+        }
+    
+        .counter input {
+            height: 50px;
+            width: 50px;
+            font-size: 2rem;
+        }
+    
+        .counter h1 {
+            background-color: white;
+            color: black;
+        }
+    
+        @media screen and (max-width: 1000px) {
+            .cb {
+                flex-direction: column;
+                margin: 0;
+            }
+    
+            .cal {
+                margin-top: 100px;
+            }
+        }
+    
+        @media screen and (max-width: 600px) {
+            .cb {
+                flex-direction: column;
+                margin: 0;
+            }
+    
+            .cal {
+                margin-top: 100px;
+                min-width: 300px;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+    
+            .cb input {
+                margin: 10;
+                margin-bottom: 0;
+            }
+        }
+    </style>
+    
+</head>
+<body id="b">
+    
+    <div class="calculators">
+        <div class="cal c1" id="c1">
+            <div>
+                <div class="inp">
+                    <input type="text" placeholder="Enter your value: " id="inp1" class="inpBox i1">
+                    <input type="text" placeholder="Enter your value: " id="inp2" class="inpBox i2" >
+        
+                </div>
+                <div>
+                    <h1>CHOOSE YOUR OPERATOR</h1>Principal
+    
+                </div>
+    
+    
+        
+                <div class="buttons">
+                    <input type="button" value="+" onclick="sum()">
+                    <input type="button" value="-" onclick="sub()">
+                    <input type="button" value="x" onclick="mul()">
+                    <input type="button" value="/" onclick="div()">
+        
+                </div>
+            </div>
+        
+            <div id="result">
+                0
+            </div>
+            <div class="next">
+                
+    
+            </div>
+        </div>
+    
+        <div class="cal c2" id="c2">
+            <div>
+                <input type="text" placeholder="Enter your value: " id="inp3" class="inpBox">
+            </div>
+            <div class="calButtons">
+                <input type="button" value="Is it EVEN?" onclick="isEven()">
+                <input type="button" value="Is it Divisible by 5?" onclick="divBy5()">
+                <input type="button" value="Does the number end with a 0" onclick="lastZero()">
+                <input type="button" value="Is it a Prime Number" onclick="prime()">
+    
+            </div>
+            <div class="s2">
+                <div class="next n2">
+                    
+                </div>
+                <div class="h">
+                    <h1 id="result2">
+                        h
+                    </h1>
+                </div>
+    
+            </div>
+            
+        
+        </div>
+    
+        <div class="cal c3" id="c3">
+            <div class="error" id ="error">
+                <h1 id="er">
+                    Enter Something
+                </h1>
+    
+            </div>
+            <div>
+                <input type="text" placeholder="Enter your value: " id="inp4" class="inpBox">
+                <input type="button" value="Go" onclick="ev()" class="g">
+            </div>
+            
+            
+        </div>
+    
+        <div class="cal si " id="c4">
+            <h1>
+                SIMPLE INTEREST CALCULATOR
+            </h1>
+    
+            <div class="fr">
+                <div class="fc">
+                    <h1>PRINCIPAL$</h1>
+                    <input type="text" placeholder="Enter Principal" class="in" id="principal">
+                </div>
+    
+                <div class="fc">
+                    <h1>RATE%</h1>
+                    <input type="text" placeholder="Enter ROI" class="in" id="roi">
+                </div>
+            </div>
+    
+            <div class="fr">
+                <div class="fc">
+                    <h1>TOTAL PERIODS</h1>
+                    <input type="text" placeholder="Enter No. of Periods:  " class="in s"  id="per">
+                </div>
+    
+                <div class="fc">
+                    <h1>DURATION</h1>
+                    <select name="YEAR" id="year" onchange="getDuration()" >
+                        <option value="1">YEAR</option>
+                        <option value="2">MONTH</option>
+                        <option value="3">DAY</option>
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="checkSI">
+                <input type="button" value="CHECK SI" id="bSI" onclick="calSi()">
+            </div>
+            <div>
+                <div class="output">
+                    <h2 id="he1">Principal amount=</h2>
+                    <h2 id="he2">Total Interest=</h2>
+                    <h2 id="he3">Total Amount=</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="cal" id="c5">
+            <div >
+                <h1>Counter</h1>
+                
+                <div class="counter">
+                    <input type="button" value="-" onclick="dec()">
+                    
+                    <h1 id="countH1">0</h1>
+                    <input type="button" value="+" onclick="inc()">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="cal" id="c6">
+
+        </div>
+    </div>
+    
+    <img class="moon" id="col" src="moon.png" onclick="bg()" alt="">
+    <div class="cb">
+        <input type="button" class="b1 b" value="Calculator" onclick="slide1()">
+        <input type="button" class="b2 b" value="Num Properties" onclick="slide2()">
+        <input type="button" class="b3 b" value="Input Validator" onclick="slide3()">
+        <input type="button" class="b4 b" value="Simple Interest" onclick="slide4()">
+        <input type="button" class="b4 b" value="Counter" onclick="slide5()">
+
+    </div>
+
+</body>
+<script>
+    const INPONE=document.getElementById("inp1");
+    const INPTWO=document.getElementById("inp2");
+    const RESULT=document.getElementById("result")
+    const RES2=document.getElementById("result2");
+    const INPTHREE=document.getElementById("inp3");
+    const INPFOUR=document.getElementById("inp4");
+
+    const BOD=document.getElementById("b");
+
+    const C1=document.getElementById("c1");
+    const C2=document.getElementById("c2");
+    const C3=document.getElementById("c3");
+    const C4=document.getElementById("c4");
+    const C5=document.getElementById("c5");
+
+    const ERRORH1=document.getElementById("er");
+
+
+    const YEAR=document.getElementById("year");
+
+    const TIME=document.getElementById("per");
+
+    const PRINCIPAL=document.getElementById("principal");
+    const ROI=document.getElementById("roi");
+
+
+    const HE1=document.getElementById("he1");
+    const HE2=document.getElementById("he2");
+    const HE3=document.getElementById("he3");
+
+    const COUNT=document.getElementById("countH1")
+
+    duration=1;
+
+    function sum(){
+        let ans= +(INPONE.value)+ +     (INPTWO.value);
+        display(ans);
+
+    }
+
+    function display(val){
+        RESULT.textContent=val;
+
+    }
+    function display2(val,col){
+        if(col==false){
+            RES2.textContent=val;
+            RES2.style.color="red";
+        }
+        else if(col==true){
+            RES2.textContent=val;
+            RES2.style.color="green";
+        }
+
+        
+
+    }
+
+    
+
+    function sub(){
+        let ans= parseInt(INPONE.value)-parseInt(INPTWO.value);
+        display(ans);
+
+    }
+
+    function mul(){
+        let ans= parseInt(INPONE.value)*parseInt(INPTWO.value);
+        display(ans);
+
+    }
+    function div(){
+        let ans= parseInt(INPONE.value)/parseInt(INPTWO.value);
+        display(ans);
+
+    }
+
+    function isEven(){
+        let n=parseInt(INPTHREE.value);
+        if(n%2==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+    }
+
+    function divBy5(){
+        let n=parseInt(INPTHREE.value);
+        if(n%5==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+    }
+
+    function lastZero(){
+        if(INPTHREE.value.charAt(INPTHREE.value.length-1)==="0"){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+        
+
+    }
+
+    function prime(){
+        let n=parseInt(INPTHREE.value);
+        count=0;
+        for(let i = 2;i<n;i++){
+            if(n%i==0){
+                count+=1;
+            }
+
+        }
+        
+        if(count==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+        
+
+    }
+
+    function slide1(){
+        C1.style.display="contents";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="none";
+    }
+    function slide2(){
+        C1.style.display="none";
+        C2.style.display="block";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="none";
+    }
+
+    function slide3(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="block";
+        C4.style.display="none";
+        C5.style.display="none";
+    }
+    function slide4(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="block";
+        C5.style.display="none";
+    }
+    function slide5(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="block";
+
+
+    }
+
+
+
+    function bg(){
+
+        BOD.style.backgroundColor=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+        
+    }
+
+    function ev(){
+        
+        if(INPFOUR.value==""){
+            ERRORH1.textContent="ERROR";
+            ERRORH1.style.color="red";
+            
+        }
+        else{
+            ERRORH1.textContent="OKAY";
+            ERRORH1.style.color="green";
+        }
+    }
+
+    function getDuration(){
+        duration=parseInt(YEAR.value)
+        return duration;
+    }
+
+    function calSi(){
+        let principal=parseFloat(PRINCIPAL.value);
+        let rate =parseFloat(ROI.value);
+        let dur=getDuration();
+        let time=parseInt(TIME.value);
+        
+        let periods=parseInt(TIME.value);
+        
+
+        console.log(principal);
+        console.log(rate);
+        console.log(dur);
+        console.log(periods)
+        
+        HE2.textContent=("Total Interest= sj");
+        
+        if(principal>0 && rate>0 && dur>0 && time>0){
+            HE1.style.color="white";
+            HE2.style.color="white";
+            HE3.style.color="white";
+            if(dur==1){
+                si=(principal*(rate/1)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+            else if(dur==2){
+                si=(principal*(rate/12)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+            else if(dur==3){
+                si=(principal*(rate/365)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+
+        }
+        else{
+            HE1.textContent=("Principal= "+"Enter valid Input");
+            HE2.textContent=("Total Interest= "+"Enter valid Input");
+            HE3.textContent=("Total Amount= "+"Enter valid Input");
+            HE1.style.color="red";
+            HE2.style.color="red";
+            HE3.style.color="red";
+    
+
+        }
+
+        
+
+        
+
+
+
+    }
+    
+
+    function dec(){
+        let c=parseInt(COUNT.textContent);
+        
+        if(c>0){
+            COUNT.textContent=c-1
+        }
+    }
+    function inc(){
+        let c=parseInt(COUNT.textContent);
+        
+        COUNT.textContent=c+1
+
+    }
+
+    
+
+
+</script>
+
+
+</html>

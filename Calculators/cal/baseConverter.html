@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Converter</title>
+    <style>
+      *{
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+        text-align: center;
+        font-family: sans-serif;
+        
+        
+      }
+      html{
+        font-size: 20px;
+      }
+      .f{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 224, 224);
+        background-image: url("https://cdn.dribbble.com/users/470545/screenshots/3471475/calculater.gif");
+        
+
+      }
+      .f2{
+        border: 0.25em  solid black;
+        
+        padding: 1em;
+        background-color: antiquewhite;
+        border-radius: 1em;
+        box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px;
+      }
+      input{
+        margin: 1em;
+        font-size: 1.5em;
+        border-radius: 0.5em;
+        background-color: rgb(219, 236, 250);
+      }
+      option,select{
+        font-size: 1.5em;
+        background-color: rgb(169, 209, 244);
+      }
+      select{
+        margin: 0.5em;
+        border-radius: 1.25em;
+        border: 2px solid black;
+      }
+      .f3{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1em;
+      }
+      .f3 input{
+        margin: 0.5em;
+        width: 60%;
+        background-color: aliceblue;
+      }
+      h2{
+        font-size: 1.5em;
+      }
+      @media screen and (max-width:700px) {
+        html{
+          font-size: 12px;
+          
+        }
+        
+      }
+    </style>
+</head>
+<body>
+    <div class="f">
+        <div class="f2">
+          <h1>Base Converter</h1>
+          <input type="text" name="" id="val">
+          <div>
+            <select name="" id="d1">
+
+              <option id="v1" value="Binary">Binary</option>
+              <option id="v2" value="Decimal">Decimal</option>
+              <option id="v3" value="Octal">Octal</option>
+              <option id="v4" value="Hexa">Hexa Decimal</option>
+            </select>
+
+            <select name="" id="d2">
+
+              <option id="v11" value="Binary">Binary</option>
+              <option id="v12" value="Decimal">Decimal</option>
+              <option id="v13" value="Octal">Octal</option> 
+              <option id="v14" value="Hexa">Hexa Decimal</option>
+            </select>
+
+          </div>
+
+          <div class="f3">
+            <input type="button" value="Calculate" onclick="Cal()">
+
+          <input type="button" value="Clear" onclick="emp()">
+          </div>
+
+
+          <h2>OUTPUT</h2>
+          <h2 id="out">_</h2>
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+  function decimalToAny(n, m) {
+    var result = '';
+  
+    while (n > 0) {
+      var remainder = n % m;
+  
+      if (m == 16) {
+        if (remainder == 10) {
+          remainder = "A";
+        }
+        else if (remainder == 11) {
+          remainder = "B";
+        }
+        else if (remainder == 12) {
+          remainder = "C";
+        }
+        else if (remainder == 13) {
+          remainder = "D";
+        }
+        else if (remainder == 14) {
+          remainder = "E";
+        }
+        else if (remainder == 15) {
+          remainder = "F";
+        }
+      }
+  
+      result += remainder;
+      n = parseInt(n / m);
+    }
+  
+    return result.split('').reverse().join('');
+  }
+
+  function baseToDecimal(n, base) {
+    let decimal = 0;
+    let power = 0;
+    for (let i = n.length - 1; i >= 0; i--) {
+      let val = 0;
+      if (n[i] == 'A' || n[i] == 'a') {
+        val = 10;
+      }
+      else if (n[i] == 'B' || n[i] == 'b') {
+        val = 11;
+      }
+      else if (n[i] == 'C' || n[i] == 'c') {
+        val = 12;
+      }
+      else if (n[i] == 'D' || n[i] == 'd') {
+        val = 13;
+      }
+      else if (n[i] == 'E' || n[i] == 'e') {
+        val = 14;
+      }
+      else if (n[i] == 'F' || n[i] == 'f') {
+        val = 15;
+      }
+      else {
+        val = parseInt(n[i]);
+      }
+  
+      decimal += val * Math.pow(base, power);
+      power++;
+    }
+    return decimal;
+  
+  }
+
+
+  function Cal() {
+    const inputNum = _("val").value;
+    const fromBase = _("d1").value;
+    const toBase = _("d2").value;
+    let result = "";
+  
+    if (fromBase === "Decimal") {
+      const decimalRegex = /^\d+$/;
+      if (!decimalRegex.test(inputNum)) {
+        _("out").textContent="Invalid input";
+        return;
+      }
+    }
+  
+    if (fromBase === "Octal") {
+      const octalRegex = /^[0-7]+$/;
+      if (!octalRegex.test(inputNum)) {
+        _("out").textContent="Invalid input";
+        return;
+      }
+    }
+    if (fromBase === "Hexa") {
+      const hexRegex = /^[0-9A-Fa-f]+$/;
+      if (!hexRegex.test(inputNum)) {
+        _("out").textContent="Invalid input";
+        return;
+      }
+    }
+  
+    if (fromBase === "Binary") {
+      const binaryRegex = /^[01]+$/;
+      if (!binaryRegex.test(inputNum)) {
+        _("out").textContent="Invalid input";
+        return;
+      }
+    }
+  
+    
+  
+    if (fromBase === "Decimal" && toBase === "Binary") {
+      result = "Binary : " + decimalToAny(parseInt(inputNum), 2);
+    }
+  
+    else if (fromBase === "Decimal" && toBase === "Octal") {
+      result = "Octal : " + decimalToAny(parseInt(inputNum), 8);
+    }
+  
+    else if (fromBase === "Decimal" && toBase === "Hexa") {
+      result = "Hexa : " + decimalToAny(parseInt(inputNum), 16);
+    }
+  
+    else if (fromBase === "Binary" && toBase === "Decimal") {
+  
+      result = "Decimal : " + baseToDecimal(inputNum, 2).toString();
+    }
+  
+    else if (fromBase === "Octal" && toBase === "Decimal") {
+      result = "Decimal : " + baseToDecimal(inputNum, 8).toString();
+    }
+  
+    else if (fromBase === "Hexa" && toBase === "Decimal") {
+      result = "Decimal : " + baseToDecimal(inputNum, 16).toString();
+    }
+  
+    else if (fromBase === "Binary" && toBase === "Octal") {
+  
+      let decim = baseToDecimal(inputNum, 2).toString();
+      result = "Octal : " + decimalToAny(parseInt(decim), 8);
+    }
+    else if (fromBase === "Binary" && toBase === "Hexa") {
+  
+      let decim = baseToDecimal(inputNum, 2).toString();
+      result = "Hexa : " + decimalToAny(parseInt(decim), 16);
+    }
+    else if (fromBase === "Hexa" && toBase === "Binary") {
+  
+      let decim = baseToDecimal(inputNum, 16).toString();
+      result = "Binary : " + decimalToAny(parseInt(decim), 2);
+      console.log(result);
+    }
+    else if (fromBase === "Hexa" && toBase === "Octal") {
+  
+      let decim = baseToDecimal(inputNum, 16).toString();
+      result = "Octal : " + decimalToAny(parseInt(decim), 8);
+    }
+    else if (fromBase === "Octal" && toBase === "Binary") {
+  
+      let decim = baseToDecimal(inputNum, 8).toString();
+      result = "Binary : " + decimalToAny(parseInt(decim), 2);
+    }
+    else if (fromBase === "Octal" && toBase === "Hexa") {
+      let decim = baseToDecimal(inputNum, 8).toString();
+      result = "Hexa : " + decimalToAny(parseInt(decim), 16);
+    }
+    else if (inputNum === "") {
+      alert("Enter a value");
+    }
+    else if (fromBase === toBase) {
+      result = fromBase + " : " + inputNum;
+    }
+  
+    else {
+      result = "Invalid conversion.";
+    }
+  
+    _("out").textContent = result;
+  }
+
+  function _(id){
+    return document.getElementById(id);
+  }
+  
+  function emp(){
+    _("val").value="";
+  }
+
+</script>

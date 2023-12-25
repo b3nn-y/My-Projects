@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        .d{
+            border: 0.25em solid black;
+            padding: 1em;
+            width: 40%;
+            margin: 15% auto;
+            
+        }
+        h1{
+            font-size: 1.5em;
+        }
+        textarea{
+            width: 100%;
+        }
+
+        @media screen and (max-width:800) {
+            html{
+                font-size: 10px;
+            }
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="d">
+        <textarea name="" id="tarea" cols="30" rows="10" oninput="count()"></textarea>
+    <h1>WordCount= <span id="wc" ></span></h1>
+    <h1>CharCount= <span id="cc" ></span></h1>
+    <h1>Longest Word= <span id="lw" ></span></h1>
+    <h1>Average Word Length= <span id="awl" ></span></h1>
+    </div>
+</body>
+</html>
+
+<script>
+    const TAREA=document.getElementById("tarea");
+    const WC=document.getElementById("wc");
+    const CC=document.getElementById("cc");
+    const LW=document.getElementById("lw");
+    const AWL=document.getElementById("awl");
+
+
+    function count(){
+        let a=TAREA.value;
+        let wc=0;
+        let cc=0;
+        isSpace=false;
+
+        lettercount=0
+        max=0
+        longestWord="";
+
+        for(let i=0;i<a.length;i++){
+            if(a[i]==" " && isSpace==false){
+                wc++;
+                isSpace=true;
+                if (lettercount>max){
+                    word="";
+                    for(j=i-lettercount;j<i;j++){
+                        word+=a[j];
+                    }
+                    longestWord=word;
+                    max=lettercount;
+                    lettercount=0                                                                                           
+
+                }
+                lettercount=0  
+
+            }
+            else if(a[i]!=" "){
+                cc++;
+                isSpace=false;
+                lettercount++;
+            }
+
+        }
+        WC.textContent=wc;
+        CC.textContent=cc;
+        LW.textContent=longestWord;
+        AWL.textContent=cc/wc;
+
+    }
+
+
+</script>

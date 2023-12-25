@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" href="https://pngimg.com/d/calculator_PNG102230.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Lobster&family=Pacifico&family=Pangolin&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <style>
+        html{
+            font-size: 20px;
+        }
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+            transition: 1s;
+        }
+        input:focus{
+            outline: none;
+
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            align-items: center;
+            background-color: slategrey;
+        }
+        .buttons{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            
+            
+        }
+
+        input:active{
+            background-color: red;
+            color: black;
+            transition: 0.25s;
+        }
+        
+        .inp{
+            
+            display: flex;
+
+        }
+
+        .inp input{
+            background-color: rgb(252, 250, 249);
+            width: 60%;
+            height: 2.5em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-left: 1em;
+            font-size: 1.5em;
+            text-align: center;
+            
+        }
+
+        .cal{
+            border: 0.25em solid black;
+            min-width: 25em;
+            min-height: 30em;
+            max-width: 30em;
+            max-height: 35em;
+            background-color: rgb(0, 0, 0);
+            padding-top: 2.5em;
+            border-radius: 1.5em;
+            height: 35em;
+            box-shadow: rgb(255, 255, 255) 0px 7em 5em -em;
+            
+        }
+
+        .buttons input{
+            margin-right: 2%;
+            margin-right: 2%;
+            background-color: rgb(206, 0, 0);
+            border-radius: 50%;
+            border: 0;
+            color: white;
+            font-size: 2.5em;
+            height: 2em;
+            width: 2em;
+            margin-bottom: 1em;
+            
+
+        }
+        #inp1{
+            margin-left: 1em;
+            border-bottom-left-radius: 1em;
+            border-top-left-radius: 1em;
+            border-right:0px;
+            background-color: rgb(255, 255, 255);
+            
+        }
+        #bSI:active{
+            background-color: green;
+            transition: 0.25s;
+
+        }
+
+        #inp2{
+            margin-right: 1em;
+            border-bottom-right-radius: 1em;
+            border-top-right-radius: 1em;
+            border-left:0px;
+            background-color: rgb(202, 202, 202);
+        }
+
+        #result{
+            margin: 0.5em;
+            font-size: 3em;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            border-radius: 1.5em;
+            
+        }
+        h1{
+            color: white;
+            text-align: center;
+            margin: 1em;
+        }
+        #result::before{
+            content: "=";
+            color: black;
+            margin-right: 0.5em;
+        }
+        h2{
+            color: aliceblue;
+        }
+
+        .next img{
+            filter: invert();
+            height: 5em;
+            width: 5em;
+            
+
+        }
+        .next{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #inp3{
+            background-color: rgb(252, 250, 249);
+            width: 80%;
+            height: 3.5em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-left: 1em;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 5% 10%;
+            border-radius: 1.5em;
+
+            
+        }
+        #inp4{
+            background-color: rgb(252, 250, 249);
+            width: 80%;
+            height: 3.5em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-left: 1em;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 5% 10%;
+            border-radius: 1.5em;
+        }
+
+        .calButtons{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+            
+        }
+
+        .calButtons input{
+            background-color: rgb(180, 192, 255);
+            width: 80%;
+            height: 2.5em;
+
+            padding-left: 1em;
+            font-size: 1.5em;
+            text-align: center;
+
+            border-radius: 1.5em;
+            margin: auto;
+            margin-bottom: 0.5em;
+        }
+        
+
+        
+        #result2{
+            font-size: 3em;
+            font-family: sans-serif;
+            color: black;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            margin: auto;
+        }
+        
+
+        .n2{
+            transform: rotate(180deg);
+        }
+
+        #col{
+            
+            height: 2.5em;
+            width: 2.5em;
+            
+            position: fixed;
+            bottom: 2%;
+            right: 2%;
+        }
+
+        #er{
+            color: red;
+            font-size: 1.5em;
+        }
+
+        .g{
+            font-size: 1.5em;
+            margin-left: 30%;
+            border-radius: 1.5em;
+            margin-top: 20%;
+            padding: 1em 3em;
+        }
+
+        .fr{
+            display: flex;
+            justify-content: center;
+            justify-content: space-around;
+        }
+
+        .fc{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            max-width: 30%;
+            
+        }
+
+        .fc h1{
+            font-size: 1em;
+            text-align: center;
+            
+        }
+
+        option,select{
+            border-radius: 1em;
+            padding: 0.5em;
+            font-size: 1.5em;
+        }
+
+        .in{
+            text-align: center;
+            font-size: 1.5em;
+            width: 9em;
+            color: white;
+            background-color: rgb(0, 0, 0);
+            border: 0;
+            border-bottom: 0.35em solid rgb(156, 154, 154);
+            padding-bottom: 0.5em;
+            
+        }
+        #er{
+            color: white;
+        }
+        .si{
+            padding: 0;
+        }
+
+        .si h1{
+            margin: 1em;
+            
+            
+
+
+        }
+        
+
+        .s{
+            font-size: 1.5em;
+
+        }
+
+        .checkSI{
+            width: 100%;
+        }
+        .checkSI input{
+            background-color: white;
+            font-size: 1.5em;
+            padding: 0.5em;
+            border-radius: 1em;
+            margin: 1em;
+            display: flex;
+            margin-left: 34%;
+        }
+        .output{
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output h2{
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .cb input{
+            display: block;
+            font-size: 1em;
+            margin: .2em;
+            padding: 1em;
+            max-width: 50em;
+        }
+        .cb{
+            display: flex;
+        }
+
+        .calculators{
+            display: flex;
+        }
+
+        #c3,#c4,#c2,#c5{
+            display: none;
+        }
+        #fl{
+            font-size: 1.2em;
+            
+            padding: 1.5em;
+        }
+
+        .b{
+            border-radius: 1em;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        
+        .counter{
+            display: flex;
+            max-width: 15em;
+            align-items: center;
+            background-color: white;
+            height: 3.4em;
+            justify-content: space-between  ;
+            margin: auto;
+
+        }
+
+        .counter input{
+            height: 2.5em;
+            width: 2.5em;
+            font-size: 1.5em;
+        }
+        .counter h1{
+            
+            background-color: white;
+            color:black;
+        }
+
+        .buttons input:active{
+            background-color: white;
+            color: black;
+            transition: 0.25s;
+
+        }
+        .calButtons input:active{
+            background-color: white;
+            color: black;
+            transition: 0.25s;
+
+        }
+
+        .b1{
+            background-color: red;
+            color: black;
+        }
+
+        #b5:active{
+            background-color: red;
+        }
+
+        #c6 input:focus{
+            outline: none;
+
+
+        }
+        #c6 input{
+            border: 0;
+        }
+
+        .bmi1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bmi1 img{
+            height: 2.5em;
+            width: 2.5em;
+        }
+
+        .c6{
+            position: relative;
+            transition: 0.50s;
+            display: none;
+        }
+
+        .bmi4 button{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-bottom-right-radius:2em ;
+            border-bottom-left-radius:2em ;
+            
+            background-color: rgb(255, 68, 93);
+            
+        }
+
+        .bmi4 h1{
+            color: black;
+            font-size: 2em;
+        }
+
+        .aboutBMI button{
+            margin: 0em 37%;
+            margin-bottom: 1.5em;
+            background-color: rgb(255, 255, 255);
+            border-radius: 1em;
+            
+            text-align: center;
+        }
+
+        .aboutBMI button h1{
+            margin: 0.7em;
+            color: black;
+        }
+
+        .aboutBMI h3{
+            margin: 1em;
+
+            font-size: 1.35em;
+            color: rgb(0, 0, 0);
+
+        }
+
+
+        .bmi2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(77, 17, 52);
+            width: 70%;
+            margin: auto;
+            border-bottom: 1em solid white;
+            border-radius: 1em;
+        }
+
+        .bmi2 input{
+            font-size: 4em;
+            border-bottom: .1em solid white;
+            background-color: rgb(77, 17, 52);
+            width: 70%;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            
+            
+
+        }
+
+        .bmi2 input::placeholder{
+            color: aliceblue;
+        }
+        .aboutBMI{
+            right: 10%;
+            top: 10%;
+            
+            position: absolute ;
+            height: 80%;
+            width: 80%;
+            background-color: rgb(192, 34, 81);
+            z-index: 10;
+            box-shadow: rgba(255, 255, 255, 0.596) 0px 30px 60px -12px, rgba(255, 255, 255, 0.61) 0px 18px 36px -18px;
+            border-radius: 1em;
+            display: none;
+        }
+        .resultBMI{
+            background-color: rgb(0, 0, 0);
+            height: 100%;
+            width: 100%;
+            z-index: 100;
+            display: none;
+            opacity: 0;
+            transition: 1.50s;
+        }
+        
+
+        
+        .bmi3 input{
+            font-size: 4em;
+            width: 100%;
+            text-align: center;
+            color: aliceblue;
+            background-color: rgb(77, 17, 52);
+
+        }
+        .upDown{
+            display: flex;
+            font-size: 1em;
+            
+
+            
+
+        }
+
+        .pl{
+            border: 0.5em solid white;
+            background-color: aliceblue;
+        }
+        .upDown button{
+            background-color: rgb(133, 17, 83);
+            width: 50%;
+            
+            
+            
+        }
+        .bmi3{
+            width: 50%;
+            margin: 1em auto;
+            background-color: rgb(77, 17, 52);
+            text-align: center;
+            border-radius: 1em;
+        }
+
+        #plus{
+            border-right: 0.5em solid white;
+
+            border-bottom: 0.75em solid white;
+            border-top: 1px solid rgba(255, 255, 255, 0);
+            border-left: 1px solid rgba(255, 255, 255, 0);
+
+            border-bottom-left-radius: 1em;
+
+        }
+        #minus{
+            border-left: 0.5em solid white;
+            border-bottom: 0.75em solid white;
+            border-top: 1px solid rgba(255, 255, 255, 0);
+            border-right: 1px solid rgba(255, 255, 255, 0);
+            border-bottom-right-radius: 1em;
+        }
+
+        #bmiValue{
+            font-size: 2.5em;
+            margin:0 ;
+        }
+
+        #bmiNum{
+            margin: 1em ;
+            font-size: 3.5em;
+            margin-bottom: 0.7em;
+        }
+        .sug{
+            width: 60%;
+            text-align: center;
+            margin: auto;
+            font-size: 1em;
+        }
+
+        .sug2{
+            text-align: center;
+            margin-top:1em ;
+        }
+        #suggestions{
+            text-align: center;
+            margin-top:0.3em ;
+        }
+        
+        @media screen and (max-width:1000px) {
+            html{
+                font-size: 15px;
+            }
+            .cb{
+                flex-direction: column;
+                margin: 0;
+
+            }
+            .cal{
+                margin-top: 20em;
+
+            }
+            .bmi4 h1{
+                color: black;
+                font-size: 1.4em;
+            }
+            
+        }
+
+        @media screen and (max-height:800px) {
+            .cal{
+                margin-top: 30em;
+
+            }
+
+        }
+
+        @media screen and (max-height:675px) {
+            .cal{
+                margin-top: 40em;
+
+            }
+
+        }
+
+        @media screen and (max-width:600px) {
+            html{
+                font-size: 10px;
+            }
+            .bmi4 h1{
+                color: black;
+                font-size: 1em;
+            }
+            
+            
+            
+        }
+    </style>
+</head>
+<body id="b">
+    
+    <div class="calculators">
+        <div class="cal c1" id="c1">
+            <div>
+                <div class="inp">
+                    <input type="text" placeholder="Enter your value: " id="inp1" class="inpBox i1">
+                    <input type="text" placeholder="Enter your value: " id="inp2" class="inpBox i2" >
+        
+                </div>
+                <div>
+                    <h1>CHOOSE YOUR OPERATOR</h1>Principal
+    
+                </div>
+    
+    
+        
+                <div class="buttons">
+                    <input type="button" value="+" onclick="sum()">
+                    <input type="button" value="-" onclick="sub()">
+                    <input type="button" value="x" onclick="mul()">
+                    <input type="button" value="/" onclick="div()">
+        
+                </div>
+            </div>
+        
+            <div id="result">
+                0
+            </div>
+            <div class="next">
+                
+    
+            </div>
+        </div>
+    
+        <div class="cal c2" id="c2">
+            <div>
+                <input type="text" placeholder="Enter your value: " id="inp3" class="inpBox">
+            </div>
+            <div class="calButtons">
+                <input type="button" value="Is it EVEN?" onclick="isEven()">
+                <input type="button" value="Is it Divisible by 5?" onclick="divBy5()">
+                <input type="button" id="fl" value="Does the number end with a 0" onclick="lastZero()">
+                <input type="button" value="Is it a Prime Number" onclick="prime()">
+    
+            </div>
+            <div class="s2">
+                <div class="next n2">
+                    
+                </div>
+                <div class="h">
+                    <h1 id="result2">
+                        h
+                    </h1>
+                </div>
+    
+            </div>
+            
+        
+        </div>
+    
+        <div class="cal c3" id="c3">
+            <div class="error" id ="error">
+                <h1 id="er">
+                    Enter Something
+                </h1>
+    
+            </div>
+            <div>
+                <input type="text" placeholder="Enter your value: " id="inp4" class="inpBox">
+                <input type="button" value="Go" onclick="ev()" class="g">
+            </div>
+            
+            
+        </div>
+    
+        <div class="cal si " id="c4">
+            <h1>
+                SIMPLE INTEREST CALCULATOR
+            </h1>
+    
+            <div class="fr">
+                <div class="fc">
+                    <h1>PRINCIPAL$</h1>
+                    <input type="text" placeholder="Enter Principal" class="in" id="principal">
+                </div>
+    
+                <div class="fc">
+                    <h1>RATE%</h1>
+                    <input type="text" placeholder="Enter ROI" class="in" id="roi">
+                </div>
+            </div>
+    
+            <div class="fr">
+                <div class="fc">
+                    <h1>TOTAL PERIODS</h1>
+                    <input type="text" placeholder="Enter No. of Periods:  " class="in s"  id="per">
+                </div>
+    
+                <div class="fc">
+                    <h1>DURATION</h1>
+                    <select name="YEAR" id="year" onchange="getDuration()" >
+                        <option value="1">YEAR</option>
+                        <option value="2">MONTH</option>
+                        <option value="3">DAY</option>
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="checkSI">
+                <input type="button" value="CHECK SI" id="bSI" onclick="calSi()">
+            </div>
+            <div>
+                <div class="output">
+                    <h2 id="he1">Principal amount=</h2>
+                    <h2 id="he2">Total Interest=</h2>
+                    <h2 id="he3">Total Amount=</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class="cal" id="c5">
+            <div >
+                <h1>Counter</h1>
+                
+                <div class="counter">
+                    <input type="button" value="-" onclick="dec()">
+                    
+                    <h1 id="countH1">0</h1>
+                    <input type="button" value="+" onclick="inc()">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="cal c6" id="c6">
+            <div class="aboutBMI" id="abtBMI">  
+                <h1>What is BMI?</h1>
+                <h3>
+                    BMI, or Body Mass Index, is a key health metric that measures your weight in relation to your height. Our app provides a convenient way to calculate and track your BMI, helping you make informed choices about your health and fitness goals. Welcome to a smarter way to stay healthy.       </h3>
+                <button onclick="aboutBack()"><h1>BACK</h1></button>
+                </div>
+            <div class="resultBMI" id="rbmi">
+                <div class="bmi4">
+
+                    <button onclick="reCalBMI()">
+                        <h1>Re-Calculate your BMI</h1>
+                        
+                    </button>
+                </div>
+
+                <h1 id="bmiValue">
+                    Underweight
+
+                </h1>
+                <h1 id="bmiNum">
+                    28
+
+                </h1>
+
+                <h2 class="sug">
+                    Try to maintain your BMI within 18.5-24.9, for a healthy life.
+                </h2>
+
+                <h2 class="sug2">
+                    Suggestions:
+                </h2>
+                <h2 id="suggestions">
+                    hi
+                </h2>
+
+            </div>
+            <div id="rdis">
+                <div class="bmi1">
+                    <img id="about" onclick="about()" src="https://static.vecteezy.com/system/resources/previews/017/177/879/original/red-question-mark-on-transparent-background-free-png.png" alt="">
+                    <h1>BMI Calculator</h1>
+                </div>
+    
+                <div class="bmi2">
+                    <h2>HEIGHT</h2>
+                    <input type="text" placeholder="I" id="height" class="height">
+                </div>
+    
+                <div class="bmi3">
+                    <h2>WEIGHT</h2>
+                    <input type="text" placeholder="I" value="48" id="weight" class="height">
+                    <div class="upDown">
+                        <button id="plus" onclick="minus()"><h1>-</h1></button>
+                        <button id="minus" onclick="plus()"><h1>+</h1></button>
+                    </div>
+                </div>
+    
+                <div class="bmi4">
+                    <button onclick="calBMI()">
+                        <h1>Calculte your BMI</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <img class="moon" id="col" src="moon.png" onclick="bg()" alt="">
+    <div class="cb">
+        <input type="button" class="b1 b" id="b1" value="Calculator" onclick="slide1()">
+        <input type="button" class="b2 b" id="b2" value="Num Properties" onclick="slide2()">
+        <input type="button" class="b3 b" id="b3" value="Input Validator" onclick="slide3()">
+        <input type="button" class="b4 b" id="b4" value="Simple Interest" onclick="slide4()">
+        <input type="button" class="b4 b" id="b5" value="Counter" onclick="slide5()">
+        <input type="button" class="b4 b" id="b6" value="BMI" onclick="slide6()">
+
+    </div>
+
+</body>
+<script>
+    const INPONE=document.getElementById("inp1");
+    const INPTWO=document.getElementById("inp2");
+    const RESULT=document.getElementById("result")
+    const RES2=document.getElementById("result2");
+    const INPTHREE=document.getElementById("inp3");
+    const INPFOUR=document.getElementById("inp4");
+
+    const BOD=document.getElementById("b");
+
+    const C1=document.getElementById("c1");
+    const C2=document.getElementById("c2");
+    const C3=document.getElementById("c3");
+    const C4=document.getElementById("c4");
+    const C5=document.getElementById("c5");
+    const C6=document.getElementById("c6");
+
+    const ERRORH1=document.getElementById("er");
+
+
+    const YEAR=document.getElementById("year");
+
+    const TIME=document.getElementById("per");
+
+    const PRINCIPAL=document.getElementById("principal");
+    const ROI=document.getElementById("roi");
+
+
+    const HE1=document.getElementById("he1");
+    const HE2=document.getElementById("he2");
+    const HE3=document.getElementById("he3");
+
+    const B1=document.getElementById("b1");
+    const B2=document.getElementById("b2");
+    const B3=document.getElementById("b3");
+    const B4=document.getElementById("b4");
+    const B5=document.getElementById("b5");
+    const B6=document.getElementById("b6");
+
+    const COUNT=document.getElementById("countH1")
+
+
+
+    const HEIGHT=document.getElementById("height");
+    const WEIGHT=document.getElementById("weight");
+   
+    const ABOUTBMI=document.getElementById("abtBMI");
+
+    const BMIINFO=document.getElementById("bmiValue");
+    const BMIVALUE=document.getElementById("bmiNum");
+    const SUGGESTIONS=document.getElementById("suggestions");
+
+    const RESULTBMI=document.getElementById("rbmi");
+    const RESULTDIS=document.getElementById("rdis");
+
+
+
+    duration=1;
+
+    function sum(){
+        if((parseInt(INPONE.value)>=0 || parseInt(INPONE.value<=0)) && ( parseInt(INPTWO.value)>=0 || parseInt(INPTWO.value<=0) )){
+            let ans= +(INPONE.value)+ +     (INPTWO.value);
+            display(ans);
+        }
+        else{
+            display("Input valid data")
+
+        }
+        
+
+    }
+
+    function display(val){
+        if(val=="Input valid data"){
+            RESULT.style.color="red";
+            RESULT.textContent=val;
+        }
+        else{
+            RESULT.style.color="black";
+            RESULT.textContent=val;
+        }
+
+
+    }
+    function display2(val,col){
+        if(col==false){
+            RES2.textContent=val;
+            RES2.style.color="red";
+        }
+        else if(col==true){
+            RES2.textContent=val;
+            RES2.style.color="green";
+        }
+
+        
+
+    }
+
+    
+
+    function sub(){
+        if((parseInt(INPONE.value)>=0 || parseInt(INPONE.value<=0)) && ( parseInt(INPTWO.value)>=0 || parseInt(INPTWO.value<=0) ) ){
+            let ans= parseInt(INPONE.value)-parseInt(INPTWO.value);
+            display(ans);
+        }
+        else{
+            display("Input valid data")
+        }
+        
+
+    }
+
+    function mul(){
+        if((parseInt(INPONE.value)>=0 || parseInt(INPONE.value<=0)) && ( parseInt(INPTWO.value)>=0 || parseInt(INPTWO.value<=0) ) ){
+            let ans= parseInt(INPONE.value)*parseInt(INPTWO.value);
+            display(ans);
+        }
+        else{
+            display("Input valid data")
+        }
+        
+
+    }
+    function div(){
+        if((parseInt(INPONE.value)>=0 || parseInt(INPONE.value<=0) )&& ( parseInt(INPTWO.value)>=0 || parseInt(INPTWO.value<=0) ) ){
+            let ans= parseInt(INPONE.value)/parseInt(INPTWO.value);
+            display(ans);
+        }
+        else{
+            display("Input valid data")
+        }
+        
+
+    }
+
+    function isEven(){
+        let n=parseInt(INPTHREE.value);
+        if(n%2==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+    }
+
+    function divBy5(){
+        let n=parseInt(INPTHREE.value);
+        if(n%5==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+    }
+
+    function lastZero(){
+        if(INPTHREE.value.charAt(INPTHREE.value.length-1)==="0"){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+        
+
+    }
+
+    function prime(){
+        let n=parseInt(INPTHREE.value);
+        count=0;
+        for(let i = 2;i<n;i++){
+            if(n%i==0){
+                count+=1;
+            }
+
+        }
+        
+        if(count==0){
+            display2("YES",true);
+        }
+        else{
+            display2("NO",false);
+        }
+        
+
+    }
+
+    function slide1(){
+        C1.style.display="flex";
+        C1.style.flexDirection="column"
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="none";
+        C6.style.display="none";
+
+        B1.style.backgroundColor="red";
+        B2.style.backgroundColor="white";
+        B3.style.backgroundColor="white";
+        B4.style.backgroundColor="white";
+        B5.style.backgroundColor="white";
+        B6.style.backgroundColor="white";
+    }
+    function slide2(){
+        C1.style.display="none";
+        C2.style.display="block";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="none";
+        C6.style.display="none";
+
+        B1.style.backgroundColor="white";
+        B2.style.backgroundColor="red";
+        B3.style.backgroundColor="white";
+        B4.style.backgroundColor="white";
+        B5.style.backgroundColor="white";
+        B6.style.backgroundColor="white";
+    }
+
+    function slide3(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="block";
+        C4.style.display="none";
+        C5.style.display="none";
+        C6.style.display="none";
+
+        B1.style.backgroundColor="white";
+        B2.style.backgroundColor="white";
+        B3.style.backgroundColor="red";
+        B4.style.backgroundColor="white";
+        B5.style.backgroundColor="white";
+        B6.style.backgroundColor="white";
+    }
+    function slide4(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="block";
+        C5.style.display="none";
+        C6.style.display="none";
+
+        B1.style.backgroundColor="white";
+        B2.style.backgroundColor="white";
+        B3.style.backgroundColor="white";
+        B4.style.backgroundColor="red";
+        B5.style.backgroundColor="white";
+        B6.style.backgroundColor="white";
+    }
+    function slide5(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="block";
+        C6.style.display="none";
+
+        B1.style.backgroundColor="white";
+        B2.style.backgroundColor="white";
+        B3.style.backgroundColor="white";
+        B4.style.backgroundColor="white";
+        B5.style.backgroundColor="red";
+        B6.style.backgroundColor="white";
+
+
+    }
+
+    function slide6(){
+        C1.style.display="none";
+        C2.style.display="none";
+        C3.style.display="none";
+        C4.style.display="none";
+        C5.style.display="none";
+        C6.style.display="block";
+
+        B1.style.backgroundColor="white";
+        B2.style.backgroundColor="white";
+        B3.style.backgroundColor="white";
+        B4.style.backgroundColor="white";
+        B5.style.backgroundColor="white";
+        B6.style.backgroundColor="red";
+
+
+    }
+
+
+
+    function bg(){
+
+        BOD.style.backgroundColor=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+        
+    }
+
+    function ev(){
+        
+        if(INPFOUR.value==""){
+            ERRORH1.textContent="ERROR";
+            ERRORH1.style.color="red";
+            
+        }
+        else{
+            ERRORH1.textContent="OKAY";
+            ERRORH1.style.color="green";
+        }
+    }
+
+    function getDuration(){
+        duration=parseInt(YEAR.value)
+        return duration;
+    }
+
+    function calSi(){
+        let principal=parseFloat(PRINCIPAL.value);
+        let rate =parseFloat(ROI.value);
+        let dur=getDuration();
+        let time=parseInt(TIME.value);
+        
+        let periods=parseInt(TIME.value);
+        
+
+        console.log(principal);
+        console.log(rate);
+        console.log(dur);
+        console.log(periods)
+        
+        HE2.textContent=("Total Interest= sj");
+        
+        if(principal>0 && rate>0 && dur>0 && time>0){
+            HE1.style.color="white";
+            HE2.style.color="white";
+            HE3.style.color="white";
+            if(dur==1){
+                si=(principal*(rate/1)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+            else if(dur==2){
+                si=(principal*(rate/12)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+            else if(dur==3){
+                si=(principal*(rate/365)*periods)/100;
+                amount=si+principal;
+                totInterest=si;
+                console.log(amount);
+                HE1.textContent=("Principal= "+principal);
+                HE2.textContent=("Total Interest= "+totInterest);
+                HE3.textContent=("Total Amount= "+amount);
+    
+            }
+
+        }
+        else{
+            HE1.textContent=("Principal= "+"Enter valid Input");
+            HE2.textContent=("Total Interest= "+"Enter valid Input");
+            HE3.textContent=("Total Amount= "+"Enter valid Input");
+            HE1.style.color="red";
+            HE2.style.color="red";
+            HE3.style.color="red";
+    
+
+        }
+
+        
+
+        
+
+
+
+    }
+    
+
+    function dec(){
+        let c=parseInt(COUNT.textContent);
+        
+        if(c>0){
+            COUNT.textContent=c-1
+        }
+    }
+    function inc(){
+        let c=parseInt(COUNT.textContent);
+        
+        COUNT.textContent=c+1
+
+    }
+
+
+    function plus(){
+        let c=parseInt(WEIGHT.value);
+        
+        WEIGHT.value=c+1
+
+    }
+    function minus(){
+        let c=parseInt(WEIGHT.value);
+        
+        if(c>1){
+            WEIGHT.value=c-1
+        }
+
+    }
+
+    function calBMI(){
+        let h=parseInt(HEIGHT.value)/100;
+        let w=parseFloat(WEIGHT.value);
+        console.log(h,w);
+        let bmi=Math.round(w/(h*h));
+        console.log(bmi);
+        RESULTBMI.style.display="contents";
+        
+        RESULTDIS.style.opacity="0";
+        
+        RESULTBMI.style.opacity="1";
+        
+
+        if(bmi<18.5){
+            BMIINFO.textContent="UNDERWEIGHT";
+            BMIINFO.style.color="red";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="red";
+            SUGGESTIONS.textContent="Consider gaining weight through a balanced diet and exercise. Consult a healthcare professional if needed.";
+            SUGGESTIONS.style.color="red";
+        }
+        else if(bmi>18.5 && bmi<25){
+            BMIINFO.textContent="Normal Weight";
+            BMIINFO.style.color="green";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="green";
+            SUGGESTIONS.textContent="Maintain a healthy diet and exercise routine for overall well-being.";
+            SUGGESTIONS.style.color="green";
+        }
+
+        else if(bmi>25 && bmi<30){
+            BMIINFO.textContent="OVERWEIGHT";
+            BMIINFO.style.color="YELLOW";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="YELLOW";
+            SUGGESTIONS.textContent="Focus on weight management through a balanced diet and regular physical activity. Consult with a healthcare provider for personalized guidance.";
+            SUGGESTIONS.style.color="green";
+        }
+        else if(bmi>30 && bmi<35){
+            BMIINFO.textContent="OBESITY (CLASS-1)";
+            BMIINFO.style.color="red";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="red";
+            SUGGESTIONS.textContent="Seek professional guidance for weight loss strategies, including diet and exercise.";
+            SUGGESTIONS.style.color="red";
+        }
+
+        else if(bmi>35 && bmi<40){
+            BMIINFO.textContent="0BESITY (CLASS-2)";
+            BMIINFO.style.color="red";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="red";
+            SUGGESTIONS.textContent="Consult with a healthcare provider for comprehensive weight management, including potential medical interventions.";
+            SUGGESTIONS.style.color="red";
+        }
+
+        else if(bmi>40){
+            BMIINFO.textContent="0BESITY (CLASS-3)";
+            BMIINFO.style.color="red";
+            BMIVALUE.textContent=bmi;
+            BMIVALUE.style.color="red";
+            SUGGESTIONS.textContent="Urgently consult a healthcare professional for specialized care and intervention.";
+            SUGGESTIONS.style.color="red";
+        }
+
+        else{
+            BMIINFO.textContent="FOOLISHNESS";
+            BMIINFO.style.color="red";
+            BMIVALUE.textContent=99;
+            BMIVALUE.style.color="red";
+            SUGGESTIONS.textContent="Enter Valid Data";
+            SUGGESTIONS.style.color="red";
+        }
+
+        RESULTBMI.style.display="block";
+        
+        RESULTDIS.style.display="none";
+        
+        RESULTBMI.style.opacity="0";
+
+        RESULTBMI.style.opacity="1";
+
+    }
+
+    function about(){
+        ABOUTBMI.style.display="block";
+
+    }
+    function aboutBack(){
+        ABOUTBMI.style.display="none";
+
+    }
+    function reCalBMI(){
+        RESULTBMI.style.opacity="0";
+
+        
+        RESULTBMI.style.display="none";
+        
+        RESULTDIS.style.display="contents";
+        
+        
+
+    }
+
+
+</script>
+
+
+</html>

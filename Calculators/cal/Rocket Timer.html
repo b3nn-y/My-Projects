@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Timer</title>
+
+    <style>
+        html{
+            font-size: 20px;
+            
+        }
+        .cen{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            font-size: 5em;
+            color: white;
+            margin: 0;
+            text-align: center;
+
+        }
+        body{
+            background-image: url("https://wallpaperaccess.com/full/6218768.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+        #secSc{
+            display: none;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+
+        #secSc{
+            display: flex;
+            flex-direction: column;
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="cen">
+        <div class="home" id="home">
+            <h1>Timer</h1>
+            <div>
+                <input type="text" placeholder="Enter the time: " id="ti">
+                <select name="" id="variants">
+                    <option value="sec">SECONDS</option>
+                    <option value="min">MINUTES</option>
+                    <option value="h">HOURS</option>
+                    <option value="day">DAYS</option>
+                </select>
+            </div>
+            <input type="button" value="START" onclick="timer()">
+        </div>
+
+        <div id="secSc">
+            <img id="roc" src="https://static.vecteezy.com/system/resources/previews/013/743/608/original/cartoon-rocket-launch-png.png" alt="">
+            <h1 id="countdown">0</h1>
+        </div>
+
+    </div>
+    <audio src="./parakurom.mp3" id="myAudio"></audio>
+    
+</body>
+</html>
+
+<script>
+    let c;
+    function _(id){
+        return document.getElementById(id);
+    }
+    function playMyAudio(){
+        document.getElementById("myAudio").play();
+      }
+    function timerSec(){
+        a=setTimeout(timerSec,1000);
+        c--;
+        console.log(c)
+        if(c>5){
+            
+        }
+        else if(c==5){
+            playMyAudio()
+
+        }
+        else if(c>0){
+
+        }
+        else{
+            console.log("Time ended")
+            
+            clearTimeout(a);
+            _("roc").style.transition="1s"
+            _("roc").style.transform="translatey(-1000%)"
+            _("countdown").textContent="Timer over";
+            
+            return true;
+        }
+        _("home").style.display="none";
+        _("secSc").style.display="block";
+        _("countdown").textContent=c;
+
+
+    }
+
+    function timerMin(){
+        setTimeout(timerMin,60000);
+        c-=1
+        console.log(c)
+        if(c>=0){
+            
+        }
+        else{
+            console.log("Time ended")
+            return true;
+        }
+
+    }
+
+    function timerHour(){
+        setTimeout(timerHour,3600000);
+        c-=1
+        console.log(c)
+        if(c>=0){
+            
+        }
+        else{
+            console.log("Time ended")
+            return true;
+        }
+
+    }
+
+    function timerDay(){
+        setTimeout(timerDay,86400000);
+        c-=1
+        console.log(c)
+        if(c>=0){
+            
+        }
+        else{
+            console.log("Time ended")
+            return true;
+        }
+
+    }
+
+    function timer(){
+        a=parseInt(_("ti").value);
+        b=_("variants").value;
+        c=a
+        
+        
+
+        switch(b){
+            case "sec":timerSec();
+            break;
+
+            case "min":timerMin();
+            break;
+
+            case "h":timerHour();
+            break;
+
+            case "day":timerDay();
+            break;
+            
+        }
+
+
+    }
+    
+
+    
+</script>
