@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MineSweeper</title>
+  <link rel="icon" href="./pick.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Lobster&family=Pacifico&family=Pangolin&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      font-size: 20px;
+      transition: 0.15s;
+    }
+
+    #a {
+
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 1em;
+      background-color: rgba(255, 217, 0, 0);
+      flex-grow: 0;
+      flex-shrink: 1;
+
+    }
+
+    body {
+
+      background-image: url("https://cdn.dribbble.com/users/893412/screenshots/4357662/media/560c5f50374c7281f5662414bdcaa098.gif");
+      background-repeat: no-repeat;
+      background-size: cover;
+      backdrop-filter: blur(0.25em);
+    }
+
+    .f {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      /*background-color: rgb(62, 226, 255);*/
+      background-image: url("https://cdna.artstation.com/p/marketplace/presentation_assets/000/380/794/medium/file.jpg?1589995510");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 1em;
+      border-top-left-radius: 1em;
+      border-bottom-left-radius: 1em;
+      margin-bottom: 1em;
+      font-size: 2.5em;
+      color: white;
+      font-family: Ubuntu;
+
+
+    }
+
+    #button {
+      border-top-left-radius: 0;
+      /*background-color: rgb(94, 169, 254);*/
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 1em;
+      border-bottom-right-radius: 1em;
+      background-image: url("https://i.pinimg.com/originals/64/27/1c/64271c37e8e6f908ef8c9fdf41e34c4c.jpg");
+      background-repeat: no-repeat;
+      background-size: 350%;
+    }
+
+    input::placeholder {
+      color: white;
+    }
+
+    .boxes {
+
+
+      /*background-color: rgb(214, 215, 255);*/
+      background-image: url("https://i.pinimg.com/1200x/db/e3/47/dbe3473558ecc6473eefde87a9455f2b.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: 1px solid black;
+      text-align: center;
+
+    }
+
+    .boxes:hover {
+
+      cursor: url("./pick.png")128 128, auto;
+
+    }
+
+    .boxes img {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      transition: 0.15s;
+    }
+
+    #bomb {
+      background-color: gold;
+    }
+
+    .f {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .homeScreen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.279);
+      backdrop-filter: blur(20px);
+      align-items: center;
+
+      width: 50%;
+      height: 50%;
+      margin: 1em;
+      border-radius: 3em;
+      border: 5px solid white;
+
+
+    }
+
+    .homeScreen button {
+      width: 70%;
+      font-size: 1.5vh;
+
+    }
+
+    .homeScreen button h1 {
+      width: 100%;
+      font-size: 1.5vh;
+
+    }
+
+    .homeScreen h1 {
+      font-size: 4vh;
+    }
+
+    h1 {
+      font-size: 5em;
+      color: rgb(255, 255, 255);
+
+      font-family: Ubuntu;
+    }
+
+    button {
+      background-color: rgb(86, 92, 255);
+      margin: 0.75em;
+
+    }
+
+    button h1 {
+      font-size: 1.5em;
+      width: 20em;
+
+    }
+
+    @media screen and (max-width:1200px) {
+      html {
+        font-size: 10px;
+      }
+
+
+    }
+
+    @media screen and (max-width:800px) {
+      html {
+        font-size: 8px;
+      }
+
+
+    }
+
+    @media screen and (max-width:600px) {
+      html {
+        font-size: 5px;
+      }
+
+
+    }
+
+    @media screen and (max-width:400px) {
+      html {
+        font-size: 8px;
+      }
+
+
+    }
+
+    .endScreen {
+      background-image: url("https://i.pinimg.com/550x/99/c1/9f/99c19fe9cb58c369f88761446d4d68fb.jpg");
+      width: 50%;
+      height: 50%;
+      margin: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3em;
+      border: 5px solid white;
+      font-size: 1.7vh;
+      position: absolute;
+      text-align: center;
+      display: none;
+      z-index: 100;
+    }
+
+    .endScreen button {
+      font-size: 1.5vh;
+      width: 40%;
+
+
+    }
+
+    .endScreen button h1 {
+      width: 100%;
+    }
+
+    #cr {
+      margin-left: 2em;
+    }
+
+    #levels h1 {
+      font-size: 3em;
+
+    }
+
+    #cr h1 {
+      font-size: 4em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="f">
+    <div id="hs" class="homeScreen">
+      <h1>MineSweeper</h1>
+      <Button onclick="selectlvl()">
+        <h1>Select your level</h1>
+      </Button>
+      <Button onclick="gradlvl()">
+        <h1>Gradually increase level</h1>
+      </Button>
+
+
+    </div>
+
+    <div id="es" class="endScreen">
+      <h1>Game Over</h1>
+      <Button onclick="rlvl()">
+        <h1>Retry</h1>
+      </Button>
+      <Button onclick="nlvl()">
+        <h1>Next Level</h1>
+      </Button>
+      <Button onclick="hom()">
+        <h1>Home Screen</h1>
+      </Button>
+
+    </div>
+
+    <div id="ws" class="endScreen">
+      <h1>You Won</h1>
+      <Button onclick="rlvl()">
+        <h1>Retry</h1>
+      </Button>
+      <Button onclick="nlvl()">
+        <h1>Next Level</h1>
+      </Button>
+      <Button onclick="hom()">
+        <h1>Home Screen</h1>
+      </Button>
+
+    </div>
+
+    <div id="ws2" class="endScreen">
+      <h1>You Won</h1>
+      <h1>Next Level Loading</h1>
+
+    </div>
+
+    <div id="levels">
+      <input class="a" type="text" id="i" placeholder="Enter the level: ">
+
+      <input class="a" id="button" type="submit" onclick="createGame()">
+      <div id="cr">
+        <h1>Coins Remaining= <span id="crn"></span></h1>
+      </div>
+    </div>
+
+
+    <div id="a">
+
+
+
+      <div id="a">
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+  grad = false;
+  currentLevel = 1
+  _("levels").style.display = "none";
+  gameStatus = true;
+  coinsRemaing = -1;
+  function _(id) {
+    return document.getElementById(id);
+  }
+  function c(cl) {
+    return document.getElementsByClassName(cl)[0];
+  }
+  const audio = new Audio('bgmusic.mp3');
+  audio.load();
+  const b1 = new Audio('b1.mp3');
+  audio.load();
+  const b2 = new Audio('b2.mp3');
+  audio.load();
+  audio.loop = true;
+  audio.play();
+  const coinAudio = new Audio('coin.mp3');
+  function createGame() {
+    audio.play();
+    gameStatus = true
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    if (grad) {
+      a = currentLevel
+    }
+    else {
+      a = parseInt(_("i").value);
+    }
+    lvl = a * (a + 2)
+    b = 3;
+    if (a > 1) {
+      b += a - 1
+    }
+    b--;
+    currentLevel = b
+    boxSize = 0;
+    if (w > h) {
+      boxSize = (h - 200) / b + 1;
+    }
+    else if (h > w) {
+      boxSize = (w - 200) / b + 1;
+
+    }
+    else {
+      boxSize = h - 100 / b + 1;
+
+    }
+    console.log(boxSize)
+    _("a").style.height = (`${((b * boxSize + 2) + (2 * b))}px`);
+    if (w > 1300) {
+      _("a").style.width = (`${((b * boxSize + 2) + (10 * b))}px`);
+    }
+    else {
+      _("a").style.width = (`${((b * boxSize + 2) + (2 * b))}px`);
+    }
+    gamebox = "";
+    console.log("Hi");
+
+
+    let box = document.getElementsByClassName("boxes");
+
+
+
+    c = 0;
+
+    bombsPercent = Math.ceil(lvl * (5 / 100))
+
+    let arr = new Array(bombsPercent);
+    for (i = 0; i < arr.length; i++) {
+      arr[i] = Math.floor(Math.random() * lvl)
+    }
+
+    console.log(arr)
+
+    let bc = 1;
+
+    let cc = 1;
+
+
+    coinsRemaing = 0
+
+    for (i = 0; i < b; i++) {
+
+
+      _("a").innerHTML = `<h1 id="b${i}"></h1>`;
+      console.log(i)
+      for (j = 0; j < b; j++) {
+        if (arr.includes(c)) {
+          gamebox += `<div class="boxes" style="min-height:${(boxSize)}px;min-width:${(boxSize)}px;max-height:${(boxSize)}px;max-width:${(boxSize)}px;" onclick="bombClick(${bc})" id="bomb${bc}"><img style="min-height:${(boxSize)}px;min-width:${(boxSize)}px;max-height:${(boxSize)}px;max-width:${(boxSize)}px;" id="ib${bc}" src="https://media.tenor.com/aZMV_bT0gVEAAAAj/the-blobs-live-on-bomb.gif" alt=""></div>`;
+          bc++;
+          c++;
+          console.log("hdh")
+          console.log(j)
+
+
+        }
+        else {
+          gamebox += `<div class="boxes" id="coin${cc}" style="min-height:${(boxSize)}px;min-width:${(boxSize)}px;max-height:${(boxSize)}px;max-width:${(boxSize)}px"  onclick="coinClick(${cc})"><img style="min-height:${(boxSize)}px;min-width:${(boxSize)}px;max-height:${(boxSize)}px;max-width:${(boxSize)}px;" id="ic${cc}" src="https://cdn.dribbble.com/users/728843/screenshots/2585386/coin_dribbble.gif" alt=""></div>`;
+          cc++;
+          c++;
+          coinsRemaing++;
+          console.log("hdh")
+          console.log(j)
+        }
+
+
+      }
+      _("crn").textContent = coinsRemaing;
+
+
+
+
+
+
+
+    }
+
+    _("a").innerHTML = gamebox;
+
+
+
+  }
+
+
+
+  function nlvl() {
+    audio.play();
+    _("es").style.display = "none";
+
+    if (grad) {
+      grad = true;
+      createGame()
+
+      _("ws").style.display = "none"
+    }
+    else {
+      grad = true;
+      createGame()
+      grad = false;
+      _("ws").style.display = "none"
+    }
+  }
+
+  function rlvl() {
+    if (grad) {
+      _("es").style.display = "none";
+      currentLevel--;
+      grad = true;
+      createGame()
+
+      _("ws").style.display = "none"
+    }
+    else {
+      _("es").style.display = "none";
+      currentLevel--;
+      grad = true;
+      createGame()
+      grad = false;
+      _("ws").style.display = "none"
+    }
+  }
+
+  function hom() {
+    location.reload();
+  }
+
+  function coinClick(a) {
+    coinAudio.play();
+    if (gameStatus) {
+      if (_("coin" + a).style.backgroundColor !== "blue") {
+        coinsRemaing--;
+        _("crn").textContent = coinsRemaing;
+      }
+      _("coin" + a).style.backgroundColor = "blue";
+      _("ic" + a).style.opacity = "1";
+
+    }
+
+    if (coinsRemaing == 0) {
+      if (grad) {
+        setTimeout(function () {
+          _("ws2").style.display = "block";
+          setTimeout(function () {
+            _("ws2").style.display = "none";
+            createGame()
+
+          }, 1000)
+
+        }, 1000)
+
+
+
+
+
+      }
+      else {
+        setTimeout(function () {
+          _("ws").style.display = "block"
+        }, 2000)
+
+      }
+    }
+
+  }
+  function bombClick(a) {
+    _("bomb" + a).style.backgroundColor = "red";
+    _("ib" + a).style.opacity = "1";
+
+    b1.volume = 1;
+
+
+    setTimeout(function () {
+      b1.play();
+      audio.volume = 0.2;
+      setTimeout(function () {
+        b2.play()
+        setTimeout(function () {
+          audio.volume = 1;
+        }, 1000)
+      }, 2000)
+    }, 10)
+    gameStatus = false;
+    _("bomb" + a).style.transition = "0";
+
+    _("bomb" + a).style.backgroundImage = `url("https://img.freepik.com/premium-vector/stone-wall-pavement-from-bricks-rocks-with-moss-game-background-cartoon_191307-991.jpg")`;
+
+
+    const myTimeout = setTimeout(function () {
+      _("es").style.display = "block";
+    }, 3000);
+
+
+
+
+
+
+  }
+  function selectlvl() {
+    _("hs").style.display = "none";
+    _("levels").style.display = "flex";
+
+
+
+  }
+
+  function gradlvl() {
+    grad = true;
+    _("levels").style.display = "flex"
+    _("i").res
+
+
+    _("hs").style.display = "none";
+    createGame();
+
+  }
+</script>
