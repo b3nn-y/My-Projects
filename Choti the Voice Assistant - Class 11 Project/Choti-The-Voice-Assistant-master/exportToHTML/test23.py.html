@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>test23.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+test23.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">chatterbot </span><span class="s0">import </span><span class="s1">ChatBot</span>
+<span class="s0">from </span><span class="s1">chatterbot.trainers </span><span class="s0">import </span><span class="s1">ChatterBotCorpusTrainer</span>
+<span class="s0">from </span><span class="s1">flask </span><span class="s0">import </span><span class="s1">Flask</span><span class="s0">, </span><span class="s1">render_template</span><span class="s0">, </span><span class="s1">request</span>
+<span class="s0">import </span><span class="s1">websockets</span>
+<span class="s1">bot = ChatBot(</span><span class="s2">'Norman'</span><span class="s1">)</span>
+<span class="s1">bot = ChatBot(</span>
+    <span class="s2">'Norman'</span><span class="s0">,</span>
+    <span class="s1">storage_adapter=</span><span class="s2">'chatterbot.storage.SQLStorageAdapter'</span><span class="s0">,</span>
+    <span class="s1">database_uri=</span><span class="s2">'sqlite:///database.sqlite3'</span>
+<span class="s1">)</span>
+<span class="s1">bot = ChatBot(</span>
+    <span class="s2">'Norman'</span><span class="s0">,</span>
+    <span class="s1">storage_adapter=</span><span class="s2">'chatterbot.storage.SQLStorageAdapter'</span><span class="s0">,</span>
+    <span class="s1">logic_adapters=[</span>
+        <span class="s2">'chatterbot.logic.MathematicalEvaluation'</span><span class="s0">,</span>
+        <span class="s2">'chatterbot.logic.TimeLogicAdapter'</span>
+    <span class="s1">]</span><span class="s0">,</span>
+    <span class="s1">database_uri=</span><span class="s2">'sqlite:///database.sqlite3'</span>
+<span class="s1">)</span>
+
+<span class="s0">while True</span><span class="s1">:</span>
+    <span class="s0">try</span><span class="s1">:</span>
+        <span class="s1">bot_input = bot.get_response(input())</span>
+        <span class="s1">print(bot_input)</span>
+
+    <span class="s0">except</span><span class="s1">(KeyboardInterrupt</span><span class="s0">, </span><span class="s1">EOFError</span><span class="s0">, </span><span class="s1">SystemExit):</span>
+        <span class="s0">break</span></pre>
+</body>
+</html>
