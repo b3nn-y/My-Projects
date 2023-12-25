@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Cars</title>
+    <link rel="icon"  href="https://www.pngmart.com/files/22/Mercedes-Benz-G-Class-PNG-Isolated-Image.png">
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        
+      }
+
+        li{
+          display: inline-block;
+          transition: 0.20s;
+          font-size: 1.5em;
+        }
+        li:hover{
+          text-decoration: underline;
+          font-size: 2em;
+          
+
+        }
+        header{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: rgb(20, 20, 20);
+          height: 10vh;
+          box-shadow: rgba(255, 0, 0, 0.3) 0px 19px 38px, rgba(255, 0, 0, 0.22) 0px 15px 12px;
+          z-index: 100;
+          color: aliceblue;
+          font-family: sans-serif;
+          
+          
+
+        }
+        ul{
+          margin: 2em;
+        }
+        .bod{
+          height: 100vh;
+          background-image: url("https://wallpapers.com/images/hd/cubed-squares-black-3d-bqeujlzpj3p2e505.jpg");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
+          backdrop-filter: blur(20px);
+          
+        }
+        .bod2{
+          height: 100%;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.456);
+          backdrop-filter: blur(2px);
+          background-attachment: fixed;
+        }
+        .bod2 img{
+          width: 60vw;
+
+          
+        }
+        .content{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          flex-direction: column;
+        }
+        h2{
+          color: rgb(203, 203, 203);
+          background-color: rgba(0, 0, 0, 0.454);
+          padding: 20px;
+          border-radius: 10px;
+          width: 80%;
+          font-size: 2em;
+          text-align: center;
+          font-family: sans-serif;
+        }
+
+        .c2{
+          height: 100vh;
+          width: 100%;
+          background-image: url("https://wallpapers.com/images/hd/cubed-squares-black-3d-bqeujlzpj3p2e505.jpg");
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+        }
+    </style>
+</head>
+<body id="bo">
+    <!-- <div id="d1">
+
+    </div>
+    <div id="d2">
+
+    </div>
+    <div id="d3">
+
+    </div>
+    <div id="d4">
+
+    </div>
+    <div id="d5">
+
+    </div> -->
+
+    <div>
+      <header>
+        <h1>Infinite Cars</h1>
+        <ul>
+          <li>Try</li>
+          <li>To</li>
+          <li>Stop</li>
+          <li>Scrolling</li>
+        </ul>
+    </header>
+    <div class="bod">
+      <div class="bod2">
+          <div class="content">
+            <img src="https://pngimg.com/d/ferrari_PNG102810.png" alt="">
+            <h2> 
+              Ferrari: where speed meets artistry. With curves that ignite desire and an engine that roars with pure power, it's not just a car—it's a symphony of speed and style, leaving an indelible mark on the road and in the hearts of enthusiasts..</h2>
+            
+          </div>
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
+
+<script>
+  carLinks=["https://pngimg.com/d/ferrari_PNG102810.png"
+  ,"https://www.tvsmotor.com/tvs-xl100/-/media/Brand-Pages/XL100/Colours/Heavy-Duty/Red/1.png"
+  ,"https://www.freepnglogos.com/uploads/lamborghini-png/lamborghini-png-transparent-lamborghini-images-6.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-pagani-huayra-sports-carcarcarsvehiclevehiclestransport-561521126343mx1ua.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-white-porsche-cayman-gts-carcarvehicletransportporsche-961524661085lby3m.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-ford-f-150-raptor-blue-carcarvehicletransportford-961524650083igijx.png"
+  ,"https://freebiescloud.com/wp-content/uploads/2021/02/2022-TOYOTA-SUPRA-1.png"
+  ,"https://pngimg.com/d/aston_martin_PNG50.png"
+  ,"https://i.pinimg.com/originals/e9/34/ac/e934ac022c9ecf2dadf6954610176627.png"
+  ,"https://pngimg.com/uploads/chevrolet/%D1%81hevrolet_PNG61.png"
+  ,"https://png.monster/wp-content/uploads/2020/11/White-Audi-Download-PNG-Image-1b78c471.png"
+  ,"https://cdn.saabre.com/uploads/public/5e4/6b3/3d6/5e46b33d66576413797079.png"
+  ,"https://pngimg.com/d/Mclaren_PNG76.png"
+  ,"https://i.pinimg.com/originals/ef/39/9d/ef399d76b2bcb8ed0913a215f4d835ea.png"
+  ,"https://pngimg.com/d/rolls_royce_PNG42.png"
+  ,"https://www.motortrend.com/uploads/sites/10/2021/12/2021-nissan-gt-r-premium-4wd-coupe-angular-front.png?fit=around%7C875:492.1875"
+  ,"https://i.pinimg.com/originals/92/61/20/926120bd9098237946be28f18eba09ae.png"
+  ,"https://www.pngmart.com/files/22/2018-BMW-I8-Coupe-PNG-Image.png"
+  ,"https://www.pngmart.com/files/22/Mercedes-Benz-AMG-PNG-Pic.png"
+  ,"https://www.pngmart.com/files/22/Koenigsegg-PNG-Free-Download.png"
+  ,"https://www.pngall.com/wp-content/uploads/6/Koenigsegg-PNG-File.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-grey-mercedes-amg-gt3-racing-carcarvehicletransportmercedes-benzmercedes-amgracing-car-961524647026qgqki.png"
+  ,"https://prod.r3eassets.com/assets/content/carlivery/mercedes-amg-0-9674-image-big.png"
+  ,"https://i.pinimg.com/originals/ee/70/89/ee7089da02ee1fecfd744670564d3cd7.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-white-porsche-991-turbo-carcarvehicletransportporscheporsche-991-961524654827njj8p.png"
+  ,"https://files.porsche.com/filestore/image/multimedia/none/992-s-t-modelimage-sideshot/model/438ba9d0-217c-11ee-8103-005056bbdc38/porsche-model.png"
+  ,"https://www.freeiconspng.com/uploads/porsche-car-png-24.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-ford-f-150-raptor-white-carcarvehicletransportford-961524652942ccwpj.png"
+  ,"https://platform.cstatic-images.com/xlarge/in/v2/stock_photos/839df797-c987-4a48-864b-79ae7ce44a54/e16102b5-3fcc-4560-adb6-590ebe186c37.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-white-ford-f-150-raptor-car-frontcarvehicletransportford-9615246537062srsu.png"
+  ,"https://i.pinimg.com/originals/83/7a/e3/837ae3f17fa7b8a04fd44ffbc660410f.png"
+  ,"https://pnglib.nyc3.cdn.digitaloceanspaces.com/uploads/2020/01/gold-aston-martin_5e27581a0623f.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-aston-martin-whitecarvehicletransportautocars-56152112520920btk.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-red-mclaren-650s-can-am-race-carcarvehicletransportmclarenrace-car-961524645159nwked.png"
+  ,"https://purepng.com/public/uploads/large/purepng.com-mclaren-650s-vayu-black-carcarvehicletransportmclaren-9615246472194zdxy.png"
+  ,"https://www.pngmart.com/files/22/Rolls-Royce-PNG-Image.png"
+  ,"https://freebiescloud.com/wp-content/uploads/2022/06/Rolls-Royce-Boat-Tail-2022-2.png"
+  ,"https://i.pinimg.com/originals/2e/a5/c2/2ea5c2b85d57a1158d861f4808560517.png"
+  ,"https://65e81151f52e248c552b-fe74cd567ea2f1228f846834bd67571e.ssl.cf1.rackcdn.com/ldm-images/2020-Mercedes-Benz-G-Class-color-G-manufaktur-South-Sea-Blue-metallic.png"
+  ,"https://pngimg.com/d/lamborghini_PNG102909.png"
+  ,"https://pnglib.nyc3.cdn.digitaloceanspaces.com/uploads/2020/01/lamborghini-urus_5e136c3620bc4.png"
+  ,"https://images.drive.com.au/driveau/image/upload/c_fill,f_auto,g_auto,h_675,q_auto:good,w_1200/cms/uploads/izw5wm4v6w59xaelxygr"
+  ,"https://assets-global.website-files.com/62238937ff359f8bea9fe86e/64439cc9e250ac95c101c35b_prestige-gallery-lamborghini-urus-rental-l.png"
+
+  ]
+  carWords=["Ferrari: where speed meets artistry. With curves that ignite desire and an engine that roars with pure power, it's not just a car—it's a symphony of speed and style, leaving an indelible mark on the road and in the hearts of enthusiasts.."
+  ,"The TVS XL: the two-wheeled hero that defies the laws of cool and embraces the art of quirk. It's not your average scooter; it's the maverick of the streets, the rebel with a tiny engine. Riding a TVS XL is like cruising on a pocket-sized party on wheels—part scooter, part circus act. With a design that screams nostalgia and a speed that feels like a gentle breeze, it's the two-wheeled companion that makes you question whether you're riding a bike or a punchline. So, buckle up (if you can find a buckle), because the TVS XL is not just a ride; it's a comedy show on wheels, and you're the star of the sitcom."
+  ,"Lamborghini, the four-wheeled rockstar of the streets! It's not just a car; it's a bold proclamation wrapped in sleek curves and painted in shades of speed. Picture this: you slip into the driver's seat, and suddenly, you're not driving; you're conducting a symphony of horsepower. It's like riding a rocket on roller skates—fast, flashy, and a tad bit flamboyant. Lamborghini isn't your average car; it's a mood, an adrenaline-infused joyride that turns every commute into a mini celebration. Buckle up, because in a Lamborghini, you're not just driving; you're grooving to the beat of the asphalt."
+  ,"Ah, the Pagani—a four-wheeled work of art that's basically a Picasso with a steering wheel. It's not just a car; it's a rolling masterpiece, a sculpture of speed that turns heads faster than it takes corners. Getting behind the wheel of a Pagani is like stepping into the cockpit of a rocket ship designed by a fashionista. It's so luxurious that even the air around it wears a tuxedo. Pagani isn't for the faint-hearted; it's for those who like their speed served with a side of avant-garde elegance. So, buckle up and get ready for a ride that's as sophisticated as it is speedy—a Pagani experience is like attending a high-speed, high-fashion soirée on wheels."
+  ,"Zooming onto the scene like a celebrity arriving at a red carpet event, the Porsche is not just a car; it's a superstar on wheels. With curves so sleek, they put Hollywood to shame, and an engine that purrs like a content cat, a Porsche is the epitome of automotive glam. It's the kind of ride that makes you feel like you're not just driving but starring in your blockbuster action film—fast, furious, and undeniably fabulous. Buckle up, because in a Porsche, you're not just cruising; you're strutting your stuff on the catwalk of the highway."
+  ,"Meet the Ford Raptor, the beast of the pickup jungle. It's not your average truck; it's a four-wheeled daredevil with a penchant for off-road acrobatics. With more torque than a motivational speaker and more attitude than a rebellious teenager, the Raptor is the rebel yell of the truck world. It's like the Hulk in a tailored suit—muscular, powerful, and ready to turn any terrain into its playground. So, buckle up for a ride that's as wild as a rodeo, because in a Ford Raptor, the road is your dirt-covered canvas for adventure."
+  ,"Enter the Toyota Supra, the speed demon with a touch of JDM magic. It's not just a car; it's a turbocharged symphony on wheels. With the aerodynamics of a ninja and a growl that could wake up Godzilla, the Supra is the street samurai of the automotive world. It's like driving a sleek rocket through a neon-soaked cityscape, where each gear shift is a dance move, and the road is your dance floor. Buckle up and get ready for a ride that's as thrilling as a blockbuster movie, because in a Supra, you're the action hero of your own high-speed saga."
+  ,"Behold the Aston Martin, where elegance meets horsepower in a tuxedo-clad rendezvous. This isn't just a car; it's a refined masterpiece, a British symphony of speed and style. With a silhouette so suave, James Bond might get jealous, and an engine that purrs like a contented cat, the Aston Martin is the epitome of automotive luxury. It's like driving a work of art through the streets, where each curve is a brushstroke of sophistication. Buckle up, because in an Aston Martin, you're not just cruising; you're attending a black-tie event on the express lane."
+  ,"Introducing the Bugatti Chiron, the automotive equivalent of a sonic boom in a tailored suit. This isn't just a car; it's a hypercar, a four-wheeled marvel that defies the laws of physics with a wink and a smirk. With more horses under the hood than a royal stable and a design so sleek it could make a cheetah jealous, the Chiron is the crown jewel of speed. It's like piloting a rocket through a wind tunnel made of silk, where velocity becomes a form of art. Buckle up for a ride that's not just fast; it's Bugatti-fast, a symphony of power and opulence on the asphalt stage."
+  ,"The Corvette, where American muscle meets a dance floor made of asphalt. This isn't just a car; it's a rockstar, a rebel with a V8 guitar riff. With curves that could make a rollercoaster jealous and a growl that echoes through the streets like a low-fi anthem, the Corvette is the heartthrob of the highway. It's like driving a convertible through a fireworks display, where every acceleration is a burst of pyrotechnic joy. Buckle up, because in a Corvette, you're not just cruising; you're headlining the main stage of the automotive arena."
+  ,"The Audi R8, where German engineering meets the finesse of a stealthy superhero. This isn't just a car; it's a high-tech marvel, a four-wheeled computer with a Ph.D. in speed. With a design so futuristic, it could give a spaceship an identity crisis, and a purr that's more cyborg than combustion, the R8 is the techno maestro of the road. It's like driving a sleek algorithm through the streets, where every turn is a carefully calculated maneuver. Buckle up, because in an Audi R8, you're not just driving; you're navigating the highway of the future."
+  ,"The Tesla Roadster, where innovation meets the open road in a silent symphony. This isn't just a car; it's a glimpse into the future, a zero-emission marvel with the soul of a spaceship. With a design so sleek, it could slip through the wind unnoticed and an acceleration that feels like teleporting to tomorrow, the Roadster is the electronaut's dream ride. It's like driving a lightning bolt through the streets, where every charge is a step towards a greener horizon. Buckle up, because in a Tesla Roadster, you're not just cruising; you're pioneering the silent revolution of the electric highway."
+  ,"The McLaren, where speed is an art form and the road is your canvas for adrenaline-fueled masterpieces. This isn't just a car; it's a precision instrument, a symphony of aerodynamics and power with a touch of British charm. With curves that could make a roller coaster blush and an engine note that's a sonic love letter to horsepower, the McLaren is the maestro of the asphalt stage. It's like driving a Formula 1 car with a license plate, where every acceleration is a standing ovation. Buckle up, because in a McLaren, you're not just driving; you're conducting a high-speed orchestra of performance and style."
+  ,"The Rolls-Royce, where opulence meets the open road in a regal procession. This isn't just a car; it's a chariot of dreams, a masterpiece on wheels with a dash of aristocratic grace. With a design that whispers sophistication and a ride so smooth, it's practically a royal decree, the Rolls-Royce is the monarch of automotive refinement. It's like driving a palace through the streets, where each journey feels like a leisurely stroll through a grand garden. Buckle up, because in a Rolls-Royce, you're not just commuting; you're embarking on a journey fit for nobility."
+  ,"The Rolls-Royce, where opulence meets the open road in a regal procession. This isn't just a car; it's a chariot of dreams, a masterpiece on wheels with a dash of aristocratic grace. With a design that whispers sophistication and a ride so smooth, it's practically a royal decree, the Rolls-Royce is the monarch of automotive refinement. It's like driving a palace through the streets, where each journey feels like a leisurely stroll through a grand garden. Buckle up, because in a Rolls-Royce, you're not just commuting; you're embarking on a journey fit for nobility."
+  ,"The Nissan GT-R, where Japanese precision meets a turbocharged tempest on the asphalt. This isn't just a car; it's a street samurai, a technological marvel with a roar that echoes through the skyline. With a design that looks like it was sculpted by a cybernetic artist and an acceleration that feels like a warp drive engaging, the GT-R is the warrior of the urban jungle. It's like piloting a high-speed ninja through the streets, where every corner is a duel between man and machine. Buckle up, because in a GT-R, you're not just driving; you're unleashing a turbocharged storm on the open road."
+  ,"The Koenigsegg, where Swedish engineering meets the symphony of speed. This isn't just a car; it's a hypercar, a technological marvel with the heart of a race car. With a design so aerodynamic, it could cut through the wind like a blade, and an engine note that's a crescendo of horsepower, the Koenigsegg is the virtuoso of velocity. It's like driving a bullet train on steroids through the streets, where every acceleration is a sonic boom. Buckle up, because in a Koenigsegg, you're not just driving; you're conducting a high-speed concerto on the asphalt stage."
+  ,"The BMW i8, where innovation meets the elegance of the open road. This isn't just a car; it's a glimpse into the automotive future, a hybrid marvel with the soul of a sports car. With a design so avant-garde, it could be mistaken for a time traveler, and a performance that seamlessly blends electric efficiency with turbocharged thrill, the i8 is the icon of eco-friendly speed. It's like driving a concept car brought to life, where every turn is a nod to the next generation of driving. Buckle up, because in a BMW i8, you're not just cruising; you're pioneering the road to a sustainable tomorrow."
+  ,"The Mercedes-AMG, where German engineering meets a symphony of horsepower on the open road. This isn't just a car; it's a performance masterpiece, a blend of luxury and raw power. With a design that exudes elegance and an engine note that's a thunderous applause to speed, the AMG is the maestro of driving excitement. It's like piloting a sleek rocket through the streets, where every acceleration is a standing ovation. Buckle up, because in a Mercedes-AMG, you're not just driving; you're commanding a high-speed symphony of performance and precision."
+  ,"The Koenigsegg, where Swedish engineering meets the symphony of speed. This isn't just a car; it's a hypercar, a technological marvel with the heart of a race car. With a design so aerodynamic, it could cut through the wind like a blade, and an engine note that's a crescendo of horsepower, the Koenigsegg is the virtuoso of velocity. It's like driving a bullet train on steroids through the streets, where every acceleration is a sonic boom. Buckle up, because in a Koenigsegg, you're not just driving; you're conducting a high-speed concerto on the asphalt stage."
+  ,"The Koenigsegg, where Swedish engineering meets the symphony of speed. This isn't just a car; it's a hypercar, a technological marvel with the heart of a race car. With a design so aerodynamic, it could cut through the wind like a blade, and an engine note that's a crescendo of horsepower, the Koenigsegg is the virtuoso of velocity. It's like driving a bullet train on steroids through the streets, where every acceleration is a sonic boom. Buckle up, because in a Koenigsegg, you're not just driving; you're conducting a high-speed concerto on the asphalt stage."
+  ,"The Mercedes-AMG, where German engineering meets a symphony of horsepower on the open road. This isn't just a car; it's a performance masterpiece, a blend of luxury and raw power. With a design that exudes elegance and an engine note that's a thunderous applause to speed, the AMG is the maestro of driving excitement. It's like piloting a sleek rocket through the streets, where every acceleration is a standing ovation. Buckle up, because in a Mercedes-AMG, you're not just driving; you're commanding a high-speed symphony of performance and precision."
+  ,"The Mercedes-AMG, where German engineering meets a symphony of horsepower on the open road. This isn't just a car; it's a performance masterpiece, a blend of luxury and raw power. With a design that exudes elegance and an engine note that's a thunderous applause to speed, the AMG is the maestro of driving excitement. It's like piloting a sleek rocket through the streets, where every acceleration is a standing ovation. Buckle up, because in a Mercedes-AMG, you're not just driving; you're commanding a high-speed symphony of performance and precision."
+  ,"Zooming onto the scene like a celebrity arriving at a red carpet event, the Porsche is not just a car; it's a superstar on wheels. With curves so sleek, they put Hollywood to shame, and an engine that purrs like a content cat, a Porsche is the epitome of automotive glam. It's the kind of ride that makes you feel like you're not just driving but starring in your blockbuster action film—fast, furious, and undeniably fabulous. Buckle up, because in a Porsche, you're not just cruising; you're strutting your stuff on the catwalk of the highway."
+  ,"Zooming onto the scene like a celebrity arriving at a red carpet event, the Porsche is not just a car; it's a superstar on wheels. With curves so sleek, they put Hollywood to shame, and an engine that purrs like a content cat, a Porsche is the epitome of automotive glam. It's the kind of ride that makes you feel like you're not just driving but starring in your blockbuster action film—fast, furious, and undeniably fabulous. Buckle up, because in a Porsche, you're not just cruising; you're strutting your stuff on the catwalk of the highway."
+  ,"Zooming onto the scene like a celebrity arriving at a red carpet event, the Porsche is not just a car; it's a superstar on wheels. With curves so sleek, they put Hollywood to shame, and an engine that purrs like a content cat, a Porsche is the epitome of automotive glam. It's the kind of ride that makes you feel like you're not just driving but starring in your blockbuster action film—fast, furious, and undeniably fabulous. Buckle up, because in a Porsche, you're not just cruising; you're strutting your stuff on the catwalk of the highway."
+  ,"Zooming onto the scene like a celebrity arriving at a red carpet event, the Porsche is not just a car; it's a superstar on wheels. With curves so sleek, they put Hollywood to shame, and an engine that purrs like a content cat, a Porsche is the epitome of automotive glam. It's the kind of ride that makes you feel like you're not just driving but starring in your blockbuster action film—fast, furious, and undeniably fabulous. Buckle up, because in a Porsche, you're not just cruising; you're strutting your stuff on the catwalk of the highway."
+  ,"Meet the Ford Raptor, the beast of the pickup jungle. It's not your average truck; it's a four-wheeled daredevil with a penchant for off-road acrobatics. With more torque than a motivational speaker and more attitude than a rebellious teenager, the Raptor is the rebel yell of the truck world. It's like the Hulk in a tailored suit—muscular, powerful, and ready to turn any terrain into its playground. So, buckle up for a ride that's as wild as a rodeo, because in a Ford Raptor, the road is your dirt-covered canvas for adventure."
+  ,"Meet the Ford Raptor, the beast of the pickup jungle. It's not your average truck; it's a four-wheeled daredevil with a penchant for off-road acrobatics. With more torque than a motivational speaker and more attitude than a rebellious teenager, the Raptor is the rebel yell of the truck world. It's like the Hulk in a tailored suit—muscular, powerful, and ready to turn any terrain into its playground. So, buckle up for a ride that's as wild as a rodeo, because in a Ford Raptor, the road is your dirt-covered canvas for adventure."
+  ,"Meet the Ford Raptor, the beast of the pickup jungle. It's not your average truck; it's a four-wheeled daredevil with a penchant for off-road acrobatics. With more torque than a motivational speaker and more attitude than a rebellious teenager, the Raptor is the rebel yell of the truck world. It's like the Hulk in a tailored suit—muscular, powerful, and ready to turn any terrain into its playground. So, buckle up for a ride that's as wild as a rodeo, because in a Ford Raptor, the road is your dirt-covered canvas for adventure."
+  ,"Behold the Aston Martin, where elegance meets horsepower in a tuxedo-clad rendezvous. This isn't just a car; it's a refined masterpiece, a British symphony of speed and style. With a silhouette so suave, James Bond might get jealous, and an engine that purrs like a contented cat, the Aston Martin is the epitome of automotive luxury. It's like driving a work of art through the streets, where each curve is a brushstroke of sophistication. Buckle up, because in an Aston Martin, you're not just cruising; you're attending a black-tie event on the express lane."
+  ,"Behold the Aston Martin, where elegance meets horsepower in a tuxedo-clad rendezvous. This isn't just a car; it's a refined masterpiece, a British symphony of speed and style. With a silhouette so suave, James Bond might get jealous, and an engine that purrs like a contented cat, the Aston Martin is the epitome of automotive luxury. It's like driving a work of art through the streets, where each curve is a brushstroke of sophistication. Buckle up, because in an Aston Martin, you're not just cruising; you're attending a black-tie event on the express lane."
+  ,"Behold the Aston Martin, where elegance meets horsepower in a tuxedo-clad rendezvous. This isn't just a car; it's a refined masterpiece, a British symphony of speed and style. With a silhouette so suave, James Bond might get jealous, and an engine that purrs like a contented cat, the Aston Martin is the epitome of automotive luxury. It's like driving a work of art through the streets, where each curve is a brushstroke of sophistication. Buckle up, because in an Aston Martin, you're not just cruising; you're attending a black-tie event on the express lane."
+  ,"The McLaren, where speed is an art form and the road is your canvas for adrenaline-fueled masterpieces. This isn't just a car; it's a precision instrument, a symphony of aerodynamics and power with a touch of British charm. With curves that could make a roller coaster blush and an engine note that's a sonic love letter to horsepower, the McLaren is the maestro of the asphalt stage. It's like driving a Formula 1 car with a license plate, where every acceleration is a standing ovation. Buckle up, because in a McLaren, you're not just driving; you're conducting a high-speed orchestra of performance and style."
+  ,"The McLaren, where speed is an art form and the road is your canvas for adrenaline-fueled masterpieces. This isn't just a car; it's a precision instrument, a symphony of aerodynamics and power with a touch of British charm. With curves that could make a roller coaster blush and an engine note that's a sonic love letter to horsepower, the McLaren is the maestro of the asphalt stage. It's like driving a Formula 1 car with a license plate, where every acceleration is a standing ovation. Buckle up, because in a McLaren, you're not just driving; you're conducting a high-speed orchestra of performance and style."
+  ,"The Rolls-Royce, where opulence meets the open road in a regal procession. This isn't just a car; it's a chariot of dreams, a masterpiece on wheels with a dash of aristocratic grace. With a design that whispers sophistication and a ride so smooth, it's practically a royal decree, the Rolls-Royce is the monarch of automotive refinement. It's like driving a palace through the streets, where each journey feels like a leisurely stroll through a grand garden. Buckle up, because in a Rolls-Royce, you're not just commuting; you're embarking on a journey fit for nobility."
+  ,"The Rolls-Royce, where opulence meets the open road in a regal procession. This isn't just a car; it's a chariot of dreams, a masterpiece on wheels with a dash of aristocratic grace. With a design that whispers sophistication and a ride so smooth, it's practically a royal decree, the Rolls-Royce is the monarch of automotive refinement. It's like driving a palace through the streets, where each journey feels like a leisurely stroll through a grand garden. Buckle up, because in a Rolls-Royce, you're not just commuting; you're embarking on a journey fit for nobility."
+  ,"The Rolls-Royce, where opulence meets the open road in a regal procession. This isn't just a car; it's a chariot of dreams, a masterpiece on wheels with a dash of aristocratic grace. With a design that whispers sophistication and a ride so smooth, it's practically a royal decree, the Rolls-Royce is the monarch of automotive refinement. It's like driving a palace through the streets, where each journey feels like a leisurely stroll through a grand garden. Buckle up, because in a Rolls-Royce, you're not just commuting; you're embarking on a journey fit for nobility."
+  ,"The Mercedes G-Wagon, where rugged meets regal in a four-wheeled fortress. This isn't just an SUV; it's an off-road titan, a symbol of strength and luxury. With a design that's as boxy as it is iconic and a ride that's smoother than a royal procession, the G-Wagon is the conqueror of both city streets and untamed trails. It's like driving a luxury tank through the urban jungle, where every pothole is a mere bump in the road. Buckle up, because in a G-Wagon, you're not just cruising; you're commanding the road with an iron fist in a leather glove."
+  ,"The Lamborghini Urus, where Italian flair meets the prowess of an SUV in a high-speed tango. This isn't just an off-roader; it's a raging bull on stilts, a blend of performance and practicality. With a design that's as aggressive as it is aerodynamic and an engine note that's a roar of pure power, the Urus is the beast of the boulevard. It's like driving a supercar with extra cargo space, where every acceleration is a pulse-quickening surge. Buckle up, because in a Urus, you're not just navigating; you're commanding the asphalt with the spirit of a bull in full charge."
+  ,"The Lamborghini Urus, where Italian flair meets the prowess of an SUV in a high-speed tango. This isn't just an off-roader; it's a raging bull on stilts, a blend of performance and practicality. With a design that's as aggressive as it is aerodynamic and an engine note that's a roar of pure power, the Urus is the beast of the boulevard. It's like driving a supercar with extra cargo space, where every acceleration is a pulse-quickening surge. Buckle up, because in a Urus, you're not just navigating; you're commanding the asphalt with the spirit of a bull in full charge."
+  ,"The Lamborghini Urus, where Italian flair meets the prowess of an SUV in a high-speed tango. This isn't just an off-roader; it's a raging bull on stilts, a blend of performance and practicality. With a design that's as aggressive as it is aerodynamic and an engine note that's a roar of pure power, the Urus is the beast of the boulevard. It's like driving a supercar with extra cargo space, where every acceleration is a pulse-quickening surge. Buckle up, because in a Urus, you're not just navigating; you're commanding the asphalt with the spirit of a bull in full charge."
+  ,"The Lamborghini Urus, where Italian flair meets the prowess of an SUV in a high-speed tango. This isn't just an off-roader; it's a raging bull on stilts, a blend of performance and practicality. With a design that's as aggressive as it is aerodynamic and an engine note that's a roar of pure power, the Urus is the beast of the boulevard. It's like driving a supercar with extra cargo space, where every acceleration is a pulse-quickening surge. Buckle up, because in a Urus, you're not just navigating; you're commanding the asphalt with the spirit of a bull in full charge."
+
+
+  ]
+  tempClass=0
+
+  function insertImg(){
+    ranCar=Math.floor(Math.random()*carLinks.length)
+    console.log(ranCar)
+    temp=`<div class="bod">
+      <div class="bod2">
+          <div class="content" id="t${tempClass}">
+            <img src="${carLinks[ranCar]}" alt="">
+            <h2> 
+              ${carWords[ranCar]}  
+            </h2>
+            
+          </div>
+      </div>
+    </div>`
+
+
+    
+    document.getElementById("bo").innerHTML+=temp;
+    document.getElementById(`t${tempClass}`).style.filter=`hue-rotate(${Math.floor(Math.random()*180)}deg)`;
+    tempClass++
+
+
+
+  }
+  insertImg()
+
+  window.addEventListener("scroll",()=>{
+      if(window.scrollY+window.innerHeight>=document.documentElement.scrollHeight){
+        insertImg()
+
+      }
+  })  
+
+
+
+    /*function generateRandomColor() {
+        // Generate a random hex color code
+        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        return randomColor;
+      }
+      
+      function generateRandomPalette(numColors) {
+        const colorPalette = [];
+        
+        for (let i = 0; i < numColors; i++) {
+          const randomColor = generateRandomColor();
+          colorPalette.push(randomColor);
+        }
+      
+        return colorPalette;
+      }
+      
+      // Example: Generate a palette of 5 random colors
+      const randomPalette = generateRandomPalette(5);
+      console.log(randomPalette);
+      function _(id){
+        return document.getElementById(id);
+      }
+      _("d1").style.backgroundColor=randomPalette[0];
+      _("d2").style.backgroundColor=randomPalette[1];
+      _("d3").style.backgroundColor=randomPalette[2];
+      _("d4").style.backgroundColor=randomPalette[3];
+      _("d5").style.backgroundColor=randomPalette[4];
+      */
+</script>
