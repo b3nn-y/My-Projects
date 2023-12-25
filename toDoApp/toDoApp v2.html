@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>To Dop APP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Josefin+Sans:ital,wght@1,300&family=Lobster&family=Mooli&family=Pacifico&family=Pangolin&family=Permanent+Marker&family=Pixelify+Sans:wght@500&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&family=Wellfleet&family=Yellowtail&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #1f1f1f;
+        }
+        html{
+            font-size: 18px;
+        }
+        .head{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #EEEEEE;
+            
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2.5em;
+            
+        }
+        .m{
+            margin: 1em;
+            font-family: Ubuntu;
+            color: #EEEEEE;
+        }
+        .title{
+            font-family: "Pacifico";
+            font-size: 2.5em;
+            
+        }
+        .slogan{
+            font-family: "Permanent Marker";
+            font-size: 1.5em;
+            color: #00ADB5;
+            letter-spacing: 0.1em;
+            
+        }
+        .tasks{
+            background-color: #f4f4f4;
+            
+            width: 90vw;
+            border-radius: 1em;
+            margin: auto;
+            min-height: 20vh;
+            padding: 3em;
+            font-family: Mooli;
+            font-size: 1.5em;
+            margin-bottom: 4em;
+        }
+        .pri{
+            font-family: Ubuntu;
+            font-size: 1em;
+        }
+        .priority{
+            width: 80vw;
+            margin: auto;
+            margin: 1em;
+        }
+        .p{
+            border: 0px solid black;
+            margin: 1em;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .highPri{
+            background-color: rgb(255, 121, 121);
+        }
+        .medPri{
+            background-color: rgb(248, 248, 177);
+        }
+        .lowPri{
+            background-color: rgb(147, 228, 147);
+        }
+        .tM{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            padding: 1em;
+            
+        }
+        .tM h2{
+            border: 0px solid black;
+            padding: 1em;
+            font-family: Ubuntu;
+            font-size: 1em;
+            background-color: #00ADB5;
+            border-radius: 1em;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        .table{
+            width: 70vw;
+            border: 1px solid black;
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+            padding: 1em;
+            align-items: center;
+        }
+        .secHalfTask{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .secHalfTask p{
+            margin-left:8em;
+        }
+        .t2{
+            font-family: "Ubuntu";
+        }
+        
+        .status{
+            padding: 0.5em;
+            font-size: 1em;
+            
+        }
+        .y{
+            background-color: yellow;
+        }
+        .g{
+            background-color: rgb(38, 235, 38);
+        }
+        .r{
+            background-color: red;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        .t2 .secHalfTask p{
+            margin-left: 6.25em;
+        }
+        .t2 .secHalfTask p img{
+            width: 2.5em;
+            height: 2.5em;
+        }
+
+
+        .t3{
+            display: flex;
+            flex-direction: column;
+            width: 68vw;
+            margin: auto;
+        }
+
+        .des1{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5em;
+        
+        }
+
+        .hide{
+            height: 0;
+            border: 0;
+            color: transparent;
+            display: none;
+            transition: 0.20s;
+        }
+        .t1{
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+            border: 0;
+        }
+        .t2,.t3{
+            border: 0;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+        }
+        .filter{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .nt{
+            display: none;
+        }
+
+        .dust{
+            width: 0px;
+            transition: 0.30s;
+        }
+        .addTaskMenu{
+            position: absolute;
+            width: 40vw;
+        
+            background-color: #DAFFFB;
+            box-shadow: rgba(0, 153, 255, 0.741) 0px 22px 70px 4px;
+            border-radius: 2.5em;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            padding: 5em;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            display: none;
+            height: 0;
+            transition: 0.20s;
+            
+            
+        }
+        .addTaskMenu div{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+        .des{
+            flex-direction: column;
+        }
+        .des textarea{
+            width: 80%;
+            margin: 1em;
+            border-radius: 1em;
+            border: 0;
+            padding: 1em;
+            font-family: sans-serif;
+            
+            font-size: 1.5em;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+        .addTaskMenu input,select{
+            height: 2em;
+            padding: 0.1em;
+            font-family: sans-serif;
+            font-size: 1.5em;
+            width: 50%;
+            border: 0;
+            border-radius: 0.5em;
+            background-color: white;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+            
+    }
+        .addTaskMenu h1{
+            font-family: Ubuntu;
+        }
+        .adb{
+            padding: 0.5em;
+            border: 0px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            border-radius: 0.5em;
+            background-color: #78caeb;
+            color: #EEEEEE;
+        }
+        .b2{
+            background-color: red;
+        }
+        .filter{
+            background-color: rgb(192, 192, 192);
+            padding: 0.5em;
+        }
+        .edMenu{
+            position: absolute;
+            z-index: 10;
+        }
+        .tick{
+            border-radius: 50%;
+            width: 3em;
+            height: 3em;
+            object-fit:cover;
+            z-index: 100;
+
+        }
+        
+        .edButton{
+            position: relative;
+        }
+        #buttons{
+            display: none;
+        }
+        .edbut{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .edbut p{
+            text-align: center;
+            font-family: "Ubuntu Mono";
+        }
+        .eb{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1em;
+        }
+        .eb:hover{
+            background-color: rgb(185, 220, 250);
+        }
+        .changePri{
+            font-size: 0.66em;
+        }
+        .calendar{
+            border: 1px solid black;
+            width: 90%;
+            max-width: 1000px;
+            
+            margin: auto;
+        }
+        .monFlex{
+            display: flex;
+            justify-content: center;
+        }
+        .monFlex h2{
+            margin: 0.5em;
+        }
+        .month{
+            display: flex;
+            justify-content: space-between;
+        }
+        .lr{
+            width: 10%;
+            border: 0;
+            background-color: rgb(172, 208, 240);
+            
+        }
+        .days{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 1em;
+            
+        }
+        
+        .tb{
+            width: 100%;
+            height: 3em;
+            border: 1px solid black;
+        }
+        #Sunday,#Monday,#Tuesday,#Wednesday,#Thursday,#Friday,#Saturday{
+            border: 1px solid black;
+            width: 10%;
+            text-align: center;
+        }
+        #daysHolder{
+            min-height: 5em;
+            background-color: rgba(220, 220, 220, 0.351);
+            box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+            margin: 1em auto;
+            width: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .daybox{
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            border-radius: 2.5em;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            
+        }
+        h1{
+            font-size: 1em;
+        }
+        #today{
+            
+            
+            font-family: Ubuntu;
+            
+        }
+        .today1{
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+
+        }
+        #midTimer{
+            font-family: "Ubuntu Mono";
+        }
+
+        #tr{
+            background-color: red;
+            border-radius: 1em;
+            padding: 1em;
+            font-family: Ubuntu;
+            font-size: 0.8em;
+            margin: 0.5em;
+        }
+        .cal2{
+            position: relative;
+        }
+        #addReviewMenu{
+            background-color: #78caeb;
+            min-height: 10vh;
+        }
+        .tdy3{
+            border-bottom: 5px solid black;
+            margin-bottom: 5em;
+        }
+
+        .imgGif{
+            width: 3em;
+            height: 3em;
+        }
+        .eyes{
+            border-radius: 2.5em;
+            margin-top: 2em;
+        }
+        .ig3{
+            display: flex;
+            justify-content: space-evenly;
+            
+        }
+        .ig3 h3{
+            font-size: 0.7em;
+            text-align: center;
+            font-family: Ubuntu;
+        }
+        .ig2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ig2:hover h3{
+            background-color: rgb(106, 240, 255);
+        }
+        .ig4 h3{
+            font-size: 1.5em;
+            font-family: Ubuntu;
+            margin-bottom: 1em;
+        }
+        .i0:hover .imgGif{
+            background-color: rgb(255, 3, 3);
+        }
+        .i1:hover .imgGif{
+            background-color: rgb(244, 96, 88);
+        }
+        .i2:hover .imgGif{
+            background-color: rgb(255, 149, 0);
+        }
+        .i3:hover .imgGif{
+            background-color: rgb(234, 236, 104);
+        }
+        .i4:hover .imgGif{
+            background-color: rgb(202, 247, 135);
+        }
+        .i5:hover .imgGif{
+            background-color: rgb(188, 236, 105);
+        }
+        .i6:hover .imgGif{
+            background-color: rgb(131, 248, 48);
+        }
+        .i7:hover .imgGif{
+            background-color: rgb(99, 242, 67);
+        }
+        .i8:hover .imgGif{
+            background-color: rgb(0, 255, 21);
+        }
+
+        .i9:hover{
+            background-image: url("https://media2.giphy.com/media/EOieeMzhYorPBBok2e/giphy.gif?cid=6c09b952trtnwy34zhyp8nim9smg6lzo5acjoymogok6ppve&ep=v1_stickers_related&rid=giphy.gif&ct=s");
+        }
+        .i9:hover .imgGif{
+            background-color: rgba(0, 207, 244, 0.817);
+            border-radius: 40%;
+        }
+        #reviewMsg{
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 1.5em;
+            color: white;
+        }
+        #jMsg{
+            text-align: center;
+            font-family: "Ubuntu Mono";
+        }
+        #msgYes{
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 1.5em;
+            background-color: green;
+            margin: 1.5em 30% 1.5em 30%;
+        }
+        #msgNo{
+            text-align: center;
+            font-size: 1.5em;
+            background-color: red;
+            margin: 1.5em 30% 1.5em 30%;
+            
+        }
+        .db2{
+            backdrop-filter: blur(1px);
+            background-color: #0066ff10;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            padding: 0.5em;
+            border-radius: 2.5em;
+            font-size: 1.5em;
+            font-family: Ubuntu;
+        }
+        #chart-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            border-radius: 1.5em;
+          }
+          #chart-container2 {
+            position: relative;
+            height: 50vh;
+            overflow: hidden;
+            border-radius: 1.5em;
+          }
+
+          @media screen and (max-width:1600px) {
+            html{
+                font-size: 15px;
+                
+            }
+            
+            
+        }
+       
+    
+    @media screen and (max-width:1300px) {
+        html{
+            font-size: 10px;
+            
+
+        }
+        .priority{
+            margin: 1em;
+        }
+        
+        
+    }
+    @media screen and (max-width:900px) {
+        html{
+            font-size: 6px;
+            
+        }
+        .priority{
+            margin: 1em;
+        }
+        
+        
+    }
+    @media screen and (max-width:480px) {
+        html{
+            font-size: 3px;
+            
+        }
+        .priority{
+            margin: 1em;
+        }
+        
+        
+    }
+        
+    </style>
+</head>
+<body>
+
+    <!-- <div class="edMenu">
+        <div id="tickButton">
+            <img class="tick" src="https://media.tenor.com/6ZkJEn80W7kAAAAC/green-tick.gif" alt="">
+        </div>
+        <div id="DeadlineButton">
+            <img src="https://cdn.dribbble.com/users/1574335/screenshots/3350042/the-deadline-effect.gif" class="tick" alt="">
+        </div>
+
+        <div id="priButton">
+            <img src="https://blog.prototion.com/content/images/2021/09/animation_priority2.gif" class="tick" alt="">
+        </div>
+        
+    </div> -->
+    <div class="addTaskMenu">
+        <div>
+            <h1 class="tempDis">Name</h1>
+            <input type="text" class="tempDis" id="tNameInput">
+        </div>
+        
+        <div>
+            <h1 class="tempDis">Deadline</h1>
+            <input  type="date" class="tempDis" id="tDeadLine">
+        </div>
+
+        <div>
+            <h1 class="tempDis">Priority</h1>
+            <select class="tempDis" name="Priority" id="optPri">
+                <option value="ew">CHOOSE</option>
+                <option value="h">HIGH</option>
+                <option value="m">MEDIUM</option>
+                <option value="l">LOW</option>
+            </select>
+        </div>
+        <div class="des">
+            <h1 class="tempDis">Description</h1>
+            <textarea class="tempDis" name="" id="tDescription" cols="30" rows="4"></textarea>
+        </div>
+        <div class="des">
+            <button class="adb tempDis" onclick="addTaskB()"><h1>Add This Task</h1></button>
+        </div>
+        <div class="des">
+            <button onclick="ctm()" class="adb b2 tempDis"><h1>Close</h1></button>
+        </div>
+
+    </div>
+    <div>
+        <div>
+            <div id="sum">
+                <div class="head">
+                    <h1 class="title">E45Y Life</h1>
+                    <h3 class="slogan">-Effortless living</h3>
+                </div>
+    
+                <div class="menu">
+                    <h1 class="m m1">Tasks</h1>
+                    <h1 class="m m2">Calender</h1>
+                </div>
+
+
+                
+            </div>
+            <div class="tasks">
+                <div class="tM">
+                    <h1>Tasks</h1>
+                    <div>
+                        <h2 onclick="addTaskMenu()">Add Task+</h2>
+                    </div>
+                </div>
+                
+                <div class="priority" id="innerContent">
+                    <!--<div class="filter">
+                        Current Tasks:
+                         <div>
+                            All
+                        </div>
+                        <div>
+                            High
+                        </div>
+                        <div>
+                            Medium
+                        </div>
+                        
+                        <div>
+                            Completed
+                        </div>
+                        <div>Pending</div>
+
+                        <div>In Progress</div>
+                        <div>
+                            History
+                        </div>  
+                    </div>-->
+                    <div id="high">
+                        <div class="highPri" onclick="highAccord()">
+                            <div class="p">
+                                <h1 class="pri">HIGH PRIORITY</h1>
+                                <h1 class="pri">></h1>
+                            </div>
+                            
+    
+                        </div>
+                        <div>
+                            <div class="table t1 reduceHeightHigh">
+                                <div>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="secHalfTask">
+                                    <p>Deadline</p>
+                                    <p>Status</p>
+                                    <p>Edit</p>
+        
+                                </div>
+                            </div>
+                            <div class="t3 hpNT nt reduceHeightHigh">
+                                No Tasks
+                                
+                            </div>
+    
+    
+                        </div>
+                    </div>
+                    <div id="medi">
+                        <div id="medPP" class="medPri" onclick="medAccord()">
+                            <div class="p">
+                                <h1 class="pri">MEDIUM PRIORITY</h1>
+                                <h1 class="pri">></h1>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="reduceHeightMedi">
+                            <div class="table t1 reduceHeightMedi">
+                                <div>
+                                    <p>Tasks</p>
+                                </div>
+                                
+                                <div class="secHalfTask reduceHeightMedi">
+                                    <p>Deadline</p>
+                                    <p>Status</p>
+                                    <p>Edit</p>
+        
+    
+                                </div>
+                            </div>
+                            <div class="t3 mpNT nt reduceHeightMedi">
+                                No Tasks
+                                
+                            </div>
+                            <div>
+                              
+                            </div>
+    
+                        </div>
+                    </div>
+                        <div id="low">
+                            <div class="lowPri" onclick="lowAccord()">
+                                <div class="p">
+                                    <h1 class="pri">LOW PRIORITY</h1>
+                                    <h1 class="pri">></h1>
+                                </div>
+                            </div>
+                            <div class="reduceHeightLow">
+                                <div class="table t1 reduceHeightLow">
+                                    <div>
+                                        <p>Tasks</p>
+                                    </div>
+                                    <div class="secHalfTask reduceHeightLow">
+                                        <p>Deadline</p>
+                                        <p>Status</p>
+                                        <p>Edit</p>
+            
+                                    </div>
+                                    
+                                </div>
+                                <div class="t3 lpNT nt reduceHeightLow">
+                                    No Tasks
+                                    
+                                </div>
+                            </div>
+            </div>
+
+            
+            
+
+        </div>
+        
+    </div>
+    <div class="tasks cal2">
+        <div>
+            <div class="tdy3">
+                <div class="today1">
+                    <h1 id="today" onclick="inputDays('today')"></h1>
+                    <h3 id="midTimer"></h3>
+                    <h3 id="tr" onclick="openReviewMenu()">Write Today's Review</h3>
+                    
+                </div>
+                <div id="addReviewMenu" class="hide">
+                    <div class="ig3">
+                        <div class="ig2 i0" onclick="reviewEm(0)">
+                            <img class="imgGif" src="./tempZoo/0.gif" alt="">
+                            <h3>Best to FORGET</h3>
+                        </div>
+                        <div class="ig2 i1" onclick="reviewEm(1)">
+                            <img class="imgGif" src="./tempZoo/1.gif" alt="">
+                            <h3>Worst Day</h3>
+                        </div>
+                        <div class="ig2 i2" onclick="reviewEm(2)">
+                            <img class="imgGif" src="./tempZoo/2.gif" alt="">
+                            <h3>Could be BETTER</h3>
+                        </div>
+                        <div class="ig2 i3"  onclick="reviewEm(3)">
+                            <img class="imgGif" src="./tempZoo/3.gif" alt="">
+                            <h3>Not that BAD</h3>
+                        </div>
+                        <div class="ig2 i4" onclick="reviewEm(4)">
+                            <img class="imgGif eyes" src="./tempZoo/4.gif" alt="">
+                            <h3>Not bad, not great—just OKAY</h3>
+                        </div>
+                        <div class="ig2 i5" onclick="reviewEm(5)">
+                            <img class="imgGif" src="./tempZoo/5.gif" alt="">
+                            <h3>GOOD Day</h3>
+                        </div>
+                        <div class="ig2 i6" onclick="reviewEm(6)">
+                            <img class="imgGif" src="./tempZoo/6.gif" alt="">
+                            <h3>A SOLID FUN day</h3>
+                        </div>
+                        <div class="ig2 i7" onclick="reviewEm(7)">
+                            <img class="imgGif" src="./tempZoo/7.gif" alt="">
+                            <h3>Almost PERFECT</h3>
+                        </div>
+                        <div class="ig2 i8" onclick="reviewEm(8)">
+                            <img class="imgGif" src="./tempZoo/8.gif" alt="">
+                            <h3>A Perfect Day</h3>
+                        </div>
+                    </div>
+                    <div class="ig4">
+                        <div class="ig2 i9" onclick="reviewEm(9)">
+                            <img class="imgGif" src="./tempZoo/100.gif" alt="">
+                            <h3>A Day to REMEMBER!</h3>
+                        </div>
+                    </div>
+                    <div id="afterMsgClick" class="hide">
+                        <div>
+                            <h1 id="reviewMsg"></h1>
+                        </div>
+                        <div class="hide">
+                            <div id="jMsg">
+                                <h3>Want to write down few lines about this day?</h3>
+                                <h3>So that you can view them later in your journal..</h3>
+                            </div>
+                            <div>
+                                <h2 id="msgYes">Yes</h2>
+                                <h2 id="msgNo">No</h2>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            <div class="calendar" id="cal">
+                <div class="month" id="monCal">
+                    <button class="lr" onclick="inputDays('backward')"><</button>
+                    <div class="monFlex">
+                        <h2 id="mon">November</h2>
+                        <h2 id="year">(2020)</h2>
+                    </div>
+                    <button onclick="inputDays('forward')" class="lr">></button>
+                </div>
+                <hr>
+                <div class="days">
+                    <div id="Sunday">
+                        <h3>Sun</h3>
+                        <!-- <div class="tb"></div> -->
+                    </div>
+                    <div id="Monday">
+                        <h3>Mon</h3>
+                        <!-- <div class="tb"></div> -->
+                    </div>
+                    <div id="Tuesday">
+                        <h3>Tue</h3>
+                    </div>
+                    <div id="Wednesday">
+                        <h3>Wed</h3>
+                    </div>
+                    <div id="Thursday">
+                        <h3>Thu</h3>
+                    </div>
+                    <div id="Friday">
+                        <h3>Fri</h3>
+                    </div>
+                    <div id="Saturday">
+                        <h3>Sat</h3>
+                    </div>
+
+                </div>
+                <div id="daysHolder">
+                    
+                    
+                </div>
+            </div>
+            
+
+            <div>
+
+            </div>
+
+        </div>
+        
+
+
+    </div>
+    <div class="tasks">
+        <div id="chart-container"></div>
+        <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    </div>
+
+    <div class="tasks">
+        <div id="chart-container2"></div>
+        <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    </div>
+
+    
+</body>
+</html>
+
+<script src="./sc2.js"></script>
+<script src="./calSc.js"></script>

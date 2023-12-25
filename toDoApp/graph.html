@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nightingale Chart - Apache ECharts Demo</title>
+</head>
+<body>
+  <div id="chart-container"></div>
+  <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js">
+    
+  </script>
+</body>
+</html>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+      }
+      #chart-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+      
+</style>
+
+<script>
+    var dom = document.getElementById('chart-container');
+    var myChart = echarts.init(dom, 'dark', {
+    renderer: 'canvas',
+    useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+    legend: {
+        top: 'bottom'
+    },
+    toolbox: {
+        show: true,
+        feature: {
+        mark: { show: true },
+        dataView: { show: true, readOnly: false },
+        restore: { show: true },
+        saveAsImage: { show: true }
+        }
+    },
+    series: [
+        {
+        name: 'Nightingale Chart',
+        type: 'pie',
+        radius: [50, 250],
+        center: ['50%', '50%'],
+        roseType: 'area',
+        itemStyle: {
+            borderRadius: 8
+        },
+        data: [
+            { value: 40, name: '😤 Best to Forget' },
+            { value: 38, name: 'rose 2' },
+            { value: 32, name: 'rose 3' },
+            { value: 30, name: 'rose 4' },
+            { value: 28, name: 'rose 5' },
+            { value: 26, name: 'rose 6' },
+            { value: 22, name: 'rose 7' },
+            { value: 18, name: 'rose 8' },
+            { value: 26, name: 'rose 6' },
+            { value: 22, name: 'rose 7' },
+            { value: 18, name: 'rose 8' }
+        ]
+        }
+    ]
+    };
+
+
+    if (option && typeof option === 'object') {
+    myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+</script>
+

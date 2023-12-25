@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .box{
+        width: 30vw;
+        height: 50vh;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 30px;
+    }
+
+    .b1,.b2{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="b1">
+            <div>
+                <h1>Principal</h1>
+                <input type="number" id="principal" >
+            </div>
+        
+            <div>
+                <h1>Rate</h1>
+                <input type="number" id="rate" >
+            </div>
+        </div>
+    
+        <div class="b2">
+            <div>
+                <h1>Number</h1>
+                <input type="number" id="nos" >
+            </div>
+            <div>
+                <h1>Period</h1>
+                <select id="type">
+            
+                    <option value="month">Monthly</option>
+                    <option value="year">Yearly</option>
+                  </select>
+            </div>
+        </div>
+        <div>
+
+            <input type="button" onclick="calculate()" value="Calculate">
+        </div>
+
+        <div>
+            <h1>Total principal :<span id="p">0</span></h1>
+            <h1>Total interest :<span id="i">0</span></h1>
+            <h1>Total Amount :<span id="a">0</span></h1>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+<script>
+    const principal=document.getElementById("principal");
+    const rate=document.getElementById("rate");
+    const number=document.getElementById("nos");
+    const type=document.getElementById("type");
+    function calculate() {
+        var principalValue = parseFloat(principal.value);
+        var rateValue = parseFloat(rate.value);
+        var numberValue = parseFloat(number.value);
+        var interest;
+      
+        if (type.value === "month") {
+          interest = (principalValue * rateValue * numberValue) / (12 * 100);
+        } else {
+          interest = (principalValue * rateValue * numberValue) / 100;
+        }
+      
+        document.getElementById("p").textContent = principalValue.toFixed(2);
+        document.getElementById("i").textContent = interest.toFixed(2);
+        document.getElementById("a").textContent = (principalValue + interest).toFixed(2);
+      }
+      
+    
+    
+  </script>

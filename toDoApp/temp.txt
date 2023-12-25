@@ -1,0 +1,106 @@
+#include <RH_ASK.h>
+
+#include <SPI.h> 
+RH_ASK rf_driver;
+int enA = 9;
+int in1 = 8;
+int in2 = 7;
+int enB = 3;
+int in3 = 5;
+int in4 = 4;
+String msg = "";  
+void setup()
+{
+
+    rf_driver.init();
+
+    Serial.begin(9600);
+    pinMode(enA, OUTPUT);
+    pinMode(enB, OUTPUT);
+    pinMode(in1, OUTPUT);
+    pinMode(in2, OUTPUT);
+    pinMode(in3, OUTPUT);
+    pinMode(in4, OUTPUT);
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, LOW);
+  }
+ 
+void loop()
+{
+
+
+    uint8_t buf[1];
+    uint8_t buflen = sizeof(buf);
+
+    if (rf_driver.recv(buf, &buflen))
+    {
+      
+
+      Serial.print("Message Received: ");
+      Serial.println((char*)buf);  
+      msg=String((char*)buf); 
+    }
+    if(msg=="S"){
+      stop();
+    }
+    else if(msg=="F"){
+      forward();
+    }
+    else if(msg=="B"){
+      backward();
+    }
+    else if(msg=="L"){
+      left();
+    }
+    else if(msg=="R"){
+      right();
+    }
+    msg="";
+}
+
+
+
+
+void backward(){
+  analogWrite(enA, 100);
+	analogWrite(enB, 100);
+  digitalWrite(in1, LOW);
+	digitalWrite(in2, HIGH);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, HIGH);
+}
+
+void forward(){
+  analogWrite(enA, 100);
+	analogWrite(enB, 100);
+  digitalWrite(in1, HIGH);
+	digitalWrite(in2, LOW);
+	digitalWrite(in3, HIGH);
+	digitalWrite(in4, LOW);
+}
+void left(){
+  analogWrite(enA, 50);
+	analogWrite(enB, 50);
+  digitalWrite(in1, LOW);
+	digitalWrite(in2, HIGH);
+	digitalWrite(in3, HIGH);
+	digitalWrite(in4, LOW);
+}
+void right(){
+  analogWrite(enA, 50);
+	analogWrite(enB, 50);
+  digitalWrite(in1, HIGH);
+	digitalWrite(in2, LOW);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, HIGH);
+}
+void stop(){
+  analogWrite(enA, 0);
+	analogWrite(enB, 0);
+  digitalWrite(in1, LOW);
+	digitalWrite(in2, LOW);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, LOW);
+}

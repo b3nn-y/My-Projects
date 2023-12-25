@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>To Dop APP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bangers&family=Bungee&family=Comic+Neue:ital,wght@1,300&family=Concert+One&family=Damion&family=Handjet:wght@300&family=Indie+Flower&family=Josefin+Sans:ital,wght@1,300&family=Lobster&family=Mooli&family=Pacifico&family=Pangolin&family=Permanent+Marker&family=Pixelify+Sans:wght@500&family=Poppins:ital,wght@0,100;1,100&family=Sacramento&family=Staatliches&family=Ubuntu+Mono&family=Ubuntu:wght@700&family=Wellfleet&family=Yellowtail&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #222831;
+        }
+        .head{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #EEEEEE;
+            
+        }
+        .menu{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px;
+            
+        }
+        .m{
+            margin: 20px;
+            font-family: Ubuntu;
+            color: #EEEEEE;
+        }
+        .title{
+            font-family: "Pacifico";
+            font-size: 50px;
+            
+        }
+        .slogan{
+            font-family: "Permanent Marker";
+            font-size: 30px;
+            color: #00ADB5;
+            letter-spacing: 2px;
+            
+        }
+        .tasks{
+            background-color: #f4f4f4;
+            
+            width: 90vw;
+            border-radius: 20px;
+            margin: auto;
+            min-height: 70vh;
+            padding: 60px;
+            font-family: Mooli;
+            font-size: 30px;
+            margin-bottom: 80px;
+        }
+        .pri{
+            font-family: Ubuntu;
+            font-size: 30px;
+        }
+        .priority{
+            width: 80vw;
+            margin: auto;
+            margin: 50px;
+        }
+        .p{
+            border: 0px solid black;
+            margin: 20px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .highPri{
+            background-color: rgb(255, 121, 121);
+        }
+        .medPri{
+            background-color: rgb(248, 248, 177);
+        }
+        .lowPri{
+            background-color: rgb(147, 228, 147);
+        }
+        .tM{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            padding: 20px;
+            
+        }
+        .tM h2{
+            border: 0px solid black;
+            padding: 20px;
+            font-family: Ubuntu;
+            font-size: 20px;
+            background-color: #00ADB5;
+            border-radius: 20px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        .table{
+            width: 70vw;
+            border: 1px solid black;
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+        }
+        .secHalfTask{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .secHalfTask p{
+            margin-left:160px;
+        }
+        .t2{
+            font-family: "Ubuntu";
+        }
+        
+        .status{
+            padding: 10px;
+            font-size: 25px;
+            
+        }
+        .y{
+            background-color: yellow;
+        }
+        .g{
+            background-color: rgb(38, 235, 38);
+        }
+        .r{
+            background-color: red;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .t2 .secHalfTask p{
+            margin-left: 125px;
+        }
+        .t2 .secHalfTask p img{
+            width: 50px;
+            height: 50px;
+        }
+
+
+        .t3{
+            display: flex;
+            flex-direction: column;
+            width: 68vw;
+            margin: auto;
+        }
+
+        .des1{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        
+        }
+
+        .hide{
+            height: 0;
+            border: 0;
+            color: transparent;
+            display: none;
+            transition: 0.20s;
+        }
+        .t1{
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+            border: 0;
+        }
+        .t2,.t3{
+            border: 0;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+        }
+        .filter{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .nt{
+            display: none;
+        }
+
+        .dust{
+            width: 0px;
+            transition: 0.30s;
+        }
+        .addTaskMenu{
+            position: absolute;
+            width: 40vw;
+        
+            background-color: #DAFFFB;
+            box-shadow: rgba(0, 153, 255, 0.741) 0px 22px 70px 4px;
+            border-radius: 50px;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+            padding: 100px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            display: none;
+            height: 0;
+            transition: 0.20s;
+            
+            
+        }
+        .addTaskMenu div{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+        .des{
+            flex-direction: column;
+        }
+        .des textarea{
+            width: 80%;
+            margin: 20px;
+            border-radius: 20px;
+            border: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            
+            font-size: 30px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+        .addTaskMenu input,select{
+            height: 40px;
+            padding: 2px;
+            font-family: sans-serif;
+            font-size: 30px;
+            width: 50%;
+            border: 0;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+            
+    }
+        .addTaskMenu h1{
+            font-family: Ubuntu;
+        }
+        .adb{
+            padding: 10px;
+            border: 0px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            border-radius: 10px;
+            background-color: #78caeb;
+            color: #EEEEEE;
+        }
+        .b2{
+            background-color: red;
+        }
+        .filter{
+            background-color: rgb(192, 192, 192);
+            padding: 10px;
+        }
+        .edMenu{
+            position: absolute;
+            z-index: 10;
+        }
+        .tick{
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            object-fit:cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="edMenu">
+        <div>
+            <img class="tick" src="https://media.tenor.com/6ZkJEn80W7kAAAAC/green-tick.gif" alt="">
+        </div>
+        <div>
+            <img src="https://cdn.dribbble.com/users/1574335/screenshots/3350042/the-deadline-effect.gif" class="tick" alt="">
+        </div>
+    </div>
+    <div class="addTaskMenu">
+        <div>
+            <h1 class="tempDis">Name</h1>
+            <input type="text" class="tempDis" id="tNameInput">
+        </div>
+        
+        <div>
+            <h1 class="tempDis">Deadline</h1>
+            <input  type="date" class="tempDis" id="tDeadLine">
+        </div>
+
+        <div>
+            <h1 class="tempDis">Priority</h1>
+            <select class="tempDis" name="Priority" id="optPri">
+                <option value="ew">CHOOSE</option>
+                <option value="h">HIGH</option>
+                <option value="m">MEDIUM</option>
+                <option value="l">LOW</option>
+            </select>
+        </div>
+        <div class="des">
+            <h1 class="tempDis">Description</h1>
+            <textarea class="tempDis" name="" id="tDescription" cols="30" rows="4"></textarea>
+        </div>
+        <div class="des">
+            <button class="adb tempDis" onclick="addTaskB()"><h1>Add This Task</h1></button>
+        </div>
+        <div class="des">
+            <button onclick="ctm()" class="adb b2 tempDis"><h1>Close</h1></button>
+        </div>
+
+    </div>
+    <div>
+        <div>
+            <div id="sum">
+                <div class="head">
+                    <h1 class="title">E45Y Life</h1>
+                    <h3 class="slogan">-Effortless living</h3>
+                </div>
+    
+                <div class="menu">
+                    <h1 class="m m1">Tasks</h1>
+                    <h1 class="m m2">Calender</h1>
+                </div>
+
+
+                
+            </div>
+            <div class="tasks">
+                <div class="tM">
+                    <h1>Tasks</h1>
+                    <div>
+                        <h2 onclick="addTaskMenu()">Add Task+</h2>
+                    </div>
+                </div>
+                
+                <div class="priority" id="innerContent">
+                    <div class="filter">
+                        Filter:
+                        <div>
+                            All
+                        </div>
+                        <div>
+                            High
+                        </div>
+                        <div>
+                            Medium
+                        </div>
+                        <div>
+                            Low
+                        </div>
+                        <div>
+                            Completed
+                        </div>
+                        <div>Pending</div>
+
+                        <div>In Progress</div>
+                    </div>
+                    <div id="high">
+                        <div class="highPri">
+                            <div class="p">
+                                <h1 class="pri">HIGH PRIORITY</h1>
+                                <h1 class="pri">></h1>
+                            </div>
+                            
+    
+                        </div>
+                        <div>
+                            <div class="table t1">
+                                <div>
+                                    <p>Tasks</p>
+                                </div>
+                                <div class="secHalfTask">
+                                    <p>Deadline</p>
+                                    <p>Status</p>
+                                    <p>Edit</p>
+        
+                                </div>
+                            </div>
+                            <div class="t3 hpNT nt">
+                                No Tasks
+                                
+                            </div>
+                            <!-- <div> 
+                                <div class="table t2">
+                                    <div>
+                                        <p>Finish the ToDo App</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status y">In Progress</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3">/////////////////////////////////////////////////////////
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+                            <div>
+                                <div class="table t2">
+                                    <div>
+                                        <p>Submit Infinite Scrolling</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status g">Completed</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3 hide">
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div>
+                                <div class="table t2">
+                                    <div>
+                                        <p>Start doing the Eye Test Assignment</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status r"> Pending</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3 hide">
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div>
+                            </div>-->
+    
+                        </div>
+                    </div>
+                    <div id="medi">
+                        <div id="medPP" class="medPri">
+                            <div class="p">
+                                <h1 class="pri">MEDIUM PRIORITY</h1>
+                                <h1 class="pri">></h1>
+                                
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <div class="table t1">
+                                <div>
+                                    <p>Tasks</p>
+                                </div>
+                                
+                                <div class="secHalfTask">
+                                    <p>Deadline</p>
+                                    <p>Status</p>
+                                    <p>Edit</p>
+        
+    
+                                </div>
+                            </div>
+                            <div class="t3 mpNT nt">
+                                No Tasks
+                                
+                            </div>
+                            <div>
+                                <!-- <div class="table t2">
+                                    <div>
+                                        <p>Finish the ToDo App</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status y">In Progress</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3 hide">
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+    
+                            <div>
+                                <div class="table t2">
+                                    <div>
+                                        <p>Submit Infinite Scrolling</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status g">Completed</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3 hide">
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+                            <div>
+                                <div class="table t2">
+                                    <div>
+                                        <p>Start doing the Eye Test Assignment</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>20-03-2453</p>
+                                        <p class="status r"> Pending</p>
+                                        <p><img src="./e1.png" alt=""></p>
+            
+                                    </div>
+                                </div>
+                                <div class="table t3 hide">
+                                    <div class="des1">
+                                        <p>Description</p>
+                                        <p>Created on: 20-23-2389</p>
+                                    </div>
+                                    <div >
+                                        <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                    </div>
+    
+                                </div> -->
+                            </div>
+    
+                        </div>
+                    </div>
+                        <div id="low">
+                            <div class="lowPri">
+                                <div class="p">
+                                    <h1 class="pri">LOW PRIORITY</h1>
+                                    <h1 class="pri">></h1>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="table t1">
+                                    <div>
+                                        <p>Tasks</p>
+                                    </div>
+                                    <div class="secHalfTask">
+                                        <p>Deadline</p>
+                                        <p>Status</p>
+                                        <p>Edit</p>
+            
+                                    </div>
+                                    
+                                </div>
+                                <div class="t3 lpNT nt">
+                                    No Tasks
+                                    
+                                </div>
+                                <!-- <div> 
+                                    <div class="table t2">
+                                        <div>
+                                            <p>Finish the ToDo App</p>
+                                        </div>
+                                        <div class="secHalfTask">
+                                            <p>20-03-2453</p>
+                                            <p class="status y">In Progress</p>
+                                            <p><img src="./e1.png" alt=""></p>
+                
+                                        </div>
+                                    </div>
+                                    <div class="table t3 hide">
+                                        <div class="des1">
+                                            <p>Description</p>
+                                            <p>Created on: 20-23-2389</p>
+                                        </div>
+                                        <div >
+                                            <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                        </div>
+        
+                                    </div>
+                                </div>
+        
+                                <div>
+                                    <div class="table t2">
+                                        <div>
+                                            <p>Submit Infinite Scrolling</p>
+                                        </div>
+                                        <div class="secHalfTask">
+                                            <p>20-03-2453</p>
+                                            <p class="status g">Completed</p>
+                                            <p><img src="./e1.png" alt=""></p>
+                
+                                        </div>
+                                    </div>
+                                    <div class="table t3 hide">
+                                        <div class="des1">
+                                            <p>Description</p>
+                                            <p>Created on: 20-23-2389</p>
+                                        </div>
+                                        <div >
+                                            <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="table t2">
+                                        <div>
+                                            <p>Start doing the Eye Test Assignment</p>
+                                        </div>
+                                        <div class="secHalfTask">
+                                            <p>20-03-2453</p>
+                                            <p class="status r"> Pending</p>
+                                            <p><img src="./e1.png" alt=""></p>
+                
+                                        </div>
+                                    </div>
+                                    <div class="table t3 hide">
+                                        <div class="des1">
+                                            <p>Description</p>
+                                            <p>Created on: 20-23-2389</p>
+                                        </div>
+                                        <div >
+                                            <p>Do the stuff and have fun, so much fun that this laptop bursts</p>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>-->   
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="./script.js"></script>
